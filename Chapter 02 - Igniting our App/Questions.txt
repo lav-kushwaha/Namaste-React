@@ -1,0 +1,161 @@
+Chapter 02 - Igniting our App
+
+Q.1 What is NPM ?
+=> NPM is a package manager used to install, delete, and update Javascript packages on your machine. 
+=>It is a tool used for package management and the default package manager for Node projects. NPM is installed when NodeJS is installed on a machine. It comes with a command-line interface (CLI) used to interact with the online database of NPM. This database is called the NPM Registry, and it hosts public and private 'packages.' To add or update packages, we use the NPM CLI to interact with this database.
+
+#npm alternative is yarn
+
+How to initialize npm?
+npm init
+npm init -y can be used to skip the setup step, npm takes care of it and creates the package.json json file automatically , but without configurations.
+
+
+#most important module-package is "bundler".
+ 1.webpack 
+ 2.vite
+ 3.parcel
+ these all three are bundlers.
+create-react-app are also used bundler behind the scene.
+# Create React App primarily used Webpack as its default bundler, not Parcel.
+
+
+ #There are two types of dependencies are there -
+ 1.DevDependencies "-D" - It is generally required for development phase. ex- npm install -D parcel
+ 2.Dependencies - It is used in production.
+
+
+Q.What does caret mean in npm?
+Caret (^)
+The caret symbol indicates that npm should restrict upgrades to patch or MINOR LEVEL UPDATES, without allowing major version updates. 
+For example, given "^5.0.2", npm will permit updates within the same major version (e.g., 5.1.0, 5.0.3), but not a jump to a new major version (e.g., 6.0.0) when running npm update.
+
+Q.What does tilde mean in npm?
+Tilde (~)
+=>By altering the caret symbol to a tilde symbol, we would only receive updates at the patch level. 
+If we were to use "~5.0.2", we would obtain version 5.0.3 if it were available, but not 5.1.0.
+=>Tilde (~) install major version automatically.
+
+note : always its is safe and used caret. bcz its okay to update minor version but not ok to update major bcz when we having major version alot of thing will break in our app.
+
+Q: What is Parcel/Webpack? Why do we need it?
+=>Webpack and Parcel are tools used in web development to bundle, optimize, and manage various assets like JavaScript, CSS, and images. 
+They enhance modularity, efficiency, and development workflows by handling tasks like code splitting, minification, and automatic asset handling. 
+Developers use them to streamline the process of building and deploying modern web applications.
+
+=>Webpack provides the functionality of live reloading with the help of the webpack-dev-server plugin installation. 
+=>Parcel has the in-built module transformers that help to learn how another type of files than JS can be run and handled.
+
+#Parcel Features :
+=> HMR (Hot Module Replacement) - parcel keeps track of file changes via file watcher algorithm and renders the changes in the files
+=> File watcher algorithm - made with C++
+=> Minification
+=> Cleaning our code
+=> DEV and production Build
+=> Super fast building algorithm
+=> Image optimization
+=> Caching while development
+=> Compresses
+=> Compatible with older version of browser
+=> HTTPS in dev
+=> Port Number
+=> Consistent hashing algorithm
+=> Zero Configuration
+=> Automatic code splitting
+
+
+Q.What is package-lock.json ?
+=>Package-lock.json keep exact version of dependencies. 
+=>It keep track of all the exact version of all the dependencies.
+
+Q.What is node_modules ?
+Node modules is a collection of dependencies or package and modules.
+ In simple terms, a module is a piece of reusable JavaScript code.
+
+
+Q:What is the difference between package.json and package-lock.json?
+
+=>package.json: It includes metadata about the project and lists the project's dependencies, along with their versions. It is used for dependency management and project configuration.
+
+=>package-lock.json: It is automatically generated and maintains a record of the exact versions of dependencies that were installed in the node_modules folder. It helps ensure consistent installations across different environments and team members.
+
+In summary, package.json is for project metadata and dependency declarations, while package-lock.json is for keeping track of the specific versions of dependencies installed to ensure consistent builds.
+
+
+Q: What is the dist folder?
+=>The /dist folder contains the minimized version of the source code. The code present in the /dist folder is actually the code which is used on production web applications.
+=>Along with the minified code, the /dist folder also comprises of all the compiled modules that may or may not be used with other systems.
+
+
+#Parcel
+/*
+ *** Parcel Feature ***
+ * Created A Server
+ * HMR - Hot Module Replacement
+ * File Watcher algorithm - C++ (Execute File when changes occur)
+ * BUNDLING
+ * MINIFY
+ * Cleaning our Code (Example - Remove Console.log)
+ * Dev and Production Build
+ * Super Fast build algorithm
+ * Image Optimization
+ * Caching while development
+ * Compression
+ * Compatible with older version of browser
+ * HTTPS on dev [Example - npx parcel index.html --https]
+ * Port Number [Example - If port number using in localhost then it will change in port number in another project running on localhost]
+ * Consistent Hashing Algorithm
+ * Zero Config
+ * Tree shaking
+ * Transitive Dependencies
+ */
+
+
+ Parcel introduced
+ “npm install -D parcel” command, Dev & Normal Dependency
+ ( ~,  ^) - caret & tilde symbol importance
+ package-lock.json
+ Node Modules
+ Parcel dependency
+ git ignore command
+ npm install 
+ npx parcel, localhost
+ npm install react
+ npm install react-dom
+ import React from “react”
+ import ReactDOM from “react-dom”
+ Deep explanation of Parcel
+ “Parcel is a beast”
+ Exploring Parcel documentation
+ System design question 
+ Prod bundles
+ Git ignore files (parcel_cache, node_modules)
+ support for older versions of Browsers
+ Government Websites - Old versions of browser
+ Why is Parcel fast?
+ Session Recap
+
+
+
+ #npx parcel build ./index.html
+
+
+
+
+ #Webpack: Webpack is a popular open-source module bundler for JavaScript applications. It takes multiple JavaScript files and their dependencies and packages them into a single optimized bundle for use in a web browser. 
+ It also has the capability to transform and bundle other types of assets such as CSS, images, and fonts.
+
+#React: React is a JavaScript library for building user interfaces.
+=>It's focused on providing a declarative and efficient way to build complex UIs by breaking them into smaller, reusable components.
+
+#react-dom: React-DOM is a package that provides DOM-specific methods that React uses to interact with the browser's DOM (Document Object Model), such as rendering React components to the DOM, updating components, and handling user events.
+
+
+Q: List down your favorite 5 superpowers of Parcel and describe any 3 of them in your own words.
+A: 5 superpowers of Parcel:
+
+HMR (Hot Module Replacement) - adds, or removes modules while an application is running, without a full reload.
+File watcher algorithm - File Watchers monitor directories on the file system and perform specific actions when desired files appear.
+Minification - Minification is the process of minimizing code and markup in your web pages and script files.
+Image optimization
+Caching while development
