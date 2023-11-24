@@ -1,0 +1,159 @@
+#Chapter 03 - Laying the Foundation.
+
+#Adding start and build in package.json.
+
+  "scripts": {
+    "start":"parcel ./index.html",
+    "build":"parcel build ./index.html",
+    "test": "jest"
+  },
+
+To Run Project Use -
+=>npm run start and npm start this work same.
+but in case of build always used 
+=>npm run build
+
+Q:Create a Nested header Element using React.createElement(h1,h2,h3 inside a div with class "title")
+=>const header = React.createElement(
+  "div",
+  {
+    className: "Title",
+    key: "title",
+  },
+  [
+    React.createElement(
+      "h1",
+      {
+        key: "h1",
+      },
+      "This is h1 Tag"
+    ),
+    React.createElement(
+        "h2",
+        {
+          key: "h2",
+        },
+        "This is h2 Tag"
+      ),
+      React.createElement(
+        "h3",
+        {
+          key: "h3",
+        },
+        "This is h3 Tag"
+      )
+  ]
+);
+
+
+Q: Create the same element using JSX
+=>const header = (
+  <div className="Title" key="title">
+    <h1 key="h1">This is h1 tag</h1>
+    <h2 key="h2">This is h2 tag</h2>
+    <h3 key="h3">This is h3 tag</h3>
+  </div>
+);
+
+Q: Create a functional component of the same with JSX
+=>const Header = () => {
+  return (
+    <div className="Title" key="title">
+      <h1 key="h1">This is h1 tag</h1>
+      <h2 key="h2">This is h2 tag</h2>
+      <h3 key="h3">This is h3 tag</h3>
+    </div>
+  );
+};
+
+Q.What is JSX ?
+=>JSX stands for JavaScript XML. JSX allows us to write HTML-like code in JavaScript and place them in the DOM without any createElement() and/or appendChild() methods. JSX makes it easier to write and add HTML in React. 
+JSX converts HTML tags into react elements.
+
+#Example 1 using JSX:
+const myElement = <h1>I Love JSX!</h1>;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(myElement);
+
+#Example 2 Without JSX:
+const myElement = React.createElement('h1', {}, 'I do not use JSX!');
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(myElement);
+
+#NOTE: JSX (JavaScript XML) is a syntax extension for JavaScript. 
+=> While it is often associated with React, JSX itself is not exclusive to React. 
+=> JSX is a syntax extension that allows you to write XML/HTML-like code in your JavaScript files.
+=> React developers commonly use JSX to define the structure of React components, and React relies on JSX for creating React elements.
+
+=> In summary, while JSX is not technically a part of React, it is closely associated with React development, and React developers often use JSX to describe the structure of their UI components.
+=> When working with React, JSX is a common and convenient way to write UI code.
+
+Q.What is Babel ?
+=> Babel is a transpiler it convert Jsx to JavaScript which browser understand.
+
+
+NOTE: If you have to give attribute in JSX you have to used camelCase.
+ex - const element = <h1 className="heading">Hello Lav!</h1>;
+
+=>If we are using multiline JSX we used () parenthesis brackets.
+ex - const element = (
+     <h1 className="heading">
+      Hello Lav!
+     </h1>);
+Q.Why we wrapped inside () brackets?
+=>bcz babel needs to understand from where JSX start and from where it is ended.
+
+
+//ReactElements Vs Function Components.
+
+1. ReactElements
+
+//Object Variable
+const element = (
+     <h1 className="heading">
+      Hello Lav!
+     </h1>
+);
+
+2.Functional Components.
+=>Different way to write functional components.
+const Tittle = () => <h1 className='Heading'>Hello Functional Components in single line.</h1>
+
+const HeadingComponents = () => {
+    return <h1 className='Heading'>Hello Functional Components with return statement and Curly Brackets</h1>
+}
+const HeadingComponents2 = () => (
+  <h1 className='Heading'>Hello Functional Components With parenthesis brackets and without curly brackets and return statement</h1>
+)
+
+// NOTE: HeadingComponents and HeadingComponents2 both components are work as same.
+
+
+Q.How to render ReactElements and Function Components ?
+1.ReactElement.
+
+const element = (
+     <h1 className="heading">
+      Hello Lav!
+     </h1>
+);
+
+//React Element rendering.
+=>const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(element);
+
+Note : We are directly passing element inside render for rendering.
+
+2. Functional Componets.
+
+const HeadingComponents = () => {
+    return <h1 className='Heading'>Hello Functional Components with return statement and Curly Brackets</h1>
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<HeadingComponents/>);
+
+Note : We are passing HeadingComponents inside render with angle brackets.
+
+
+Q.What is component composition or Nested Component ?
