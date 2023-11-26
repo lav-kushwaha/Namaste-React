@@ -1,0 +1,50 @@
+Chapter 04 - Talk is Cheap, show me the code 
+
+Note: Whatever app we are building first of all build wireframe, do planning before building website we plan then its easy to make website.
+/*
+Header
+    -Logo
+    -NavItems
+Body 
+    -Search
+    -RestaurantContainer
+         - Restaurant card
+             - Image
+             - Name
+             - Rating
+Footer
+    -Copyright disclaimer
+    -Links
+    -Contact
+*/
+
+/* My Food App structure will look like this, 
+            1) Header
+                - Logo
+                - Nav Items(right side)
+                - Cart
+            2) Body
+                - Search bar
+                - Restaurants List
+                    - Restaurant card
+                        - Image
+                        - Name
+                        - Rating
+            3) Footer
+                - Links
+                - Copyrights
+       
+*/
+
+
+#What is props ?
+=>Props stands for properties.
+=>It is used to passed argument one component to another component - parent component to child component.
+=>In ReactJS, the props are a type of object where the value of attributes of a tag is stored. 
+=>Basically, these props components are read-only components.
+=>Props are immutable, which means that they cannot be modified
+=>The word “props” implies “properties”, and its working functionality is quite similar to HTML attributes.
+=>React Props are like function arguments in JavaScript and attributes in HTML.
+To send props into a component, use the same syntax as HTML attributes:
+ex - <Car brand="Ford" />;
+

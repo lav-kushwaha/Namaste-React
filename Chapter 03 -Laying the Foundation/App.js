@@ -31,21 +31,56 @@ import ReactDOM from 'react-dom/client'
 // )
 // NOTE: HeadingComponents and HeadingComponents2 both components are work as same.
 
-
 //Component Composition or Nested Components.
-const Title = () => (
-    <div className='container'>
-        <h1>Nested Component</h1>
+// const Title = () => (
+//     <div className='container'>
+//         <h1>Nested Component</h1>
+//     </div>
+// )
+
+// const Content = () =>(
+//       <div className='container'>
+//         <Title/>
+//         <h2>Hello My name is lav!</h2>
+//       </div>
+//  );
+
+//Enjecting Javascript code inside JSX.
+// var addition = 100+200
+// const Content = () => (
+//     <div className='container'>
+//       <h1>{addition}</h1>
+//       <h2>Hello My name is lav!</h2>
+//     </div>
+// );
+
+//Nested Component or Component Composition.
+const Tag = <span>I am Tag</span>;
+const add = 200+300;
+const element = (
+    <div className='element-container'>
+        <h3>{Tag}</h3>
+        <h2>Addtion {add}</h2>
+        <h1>Hello I am Element!</h1>
     </div>
 )
 
-const Content = () =>(
-      <div className='container'>
-        <Title/>
-        <h2>Hello My name is lav!</h2>
-      </div>
- );
+const Element1 = () => (
+    <div className='element-container'>
+        <h3>{Tag}</h3>
+        <h2>Addtion {add}</h2>
+        <h1>Hello I am Element!</h1>
+    </div>
+)
 
- 
+const Component = () =>(
+    <div className='component-container'>
+        <h1>Hello I am Component!</h1>
+        {Element1()}
+        <Element1/>
+        <Element1></Element1>
+    </div>
+)
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Content/>);
+root.render(<Component></Component>);

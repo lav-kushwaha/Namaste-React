@@ -104,7 +104,7 @@ Q.Why we wrapped inside () brackets?
 =>bcz babel needs to understand from where JSX start and from where it is ended.
 
 
-//ReactElements Vs Function Components.
+Q.ReactElements Vs Function Components.
 
 1. ReactElements
 
@@ -155,5 +155,56 @@ root.render(<HeadingComponents/>);
 
 Note : We are passing HeadingComponents inside render with angle brackets.
 
-
 Q.What is component composition or Nested Component ?
+=>Component composition in React refers to the practice of combining and nesting multiple components together to build more complex user interfaces. 
+It involves breaking down the UI into smaller, reusable components and then combining them to create larger, more feature-rich components or pages.
+
+#Example:
+//Component Composition or Nested Components.
+const Title = () => (
+    <div className='container'>
+        <h1>Nested Component</h1>
+    </div>
+)
+
+const Content = () =>(
+      <div className='container'>
+        <Title/>
+        <h2>Hello My name is lav!</h2>
+      </div>
+ );
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Content/>);
+
+
+//Enjecting Javascript code inside JSX.
+var addition = 100+200
+const Content = () => (
+    <div className='container'>
+      <h1>{addition}</h1>
+      <h2>Hello My name is lav!</h2>
+    </div>
+);
+
+Note:Component name is always will be start with capital letter.
+
+
+#Passing or calling functional component inside another functional component in 3 different ways:
+const Element1 = () => (
+    <div className='element-container'>
+        <h1>Hello I am Element!</h1>
+    </div>
+)
+
+const Component = () =>(
+    <div className='component-container'>
+       1st way. {Element1()}
+       2nd way. <Element1/>
+       3rd way. <Element1></Element1>
+        <h1>Hello I am Component!</h1>
+    </div>
+)
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Component/>);  // we can also write like this for functional component root.render(Component())
