@@ -48,3 +48,8 @@ Footer
 To send props into a component, use the same syntax as HTML attributes:
 ex - <Car brand="Ford" />;
 
+V.IMP-NOTE : when you have to dynamically passing some data to component passed as a props.
+
+What is a config driven UI?
++>Config-driven UI is a technique that allows you to create user interfaces based on a configuration file, such as JSON, or a TypeScript file that defines the layout and content of the UI components. 
+=>This can be useful for creating dynamic and customizable UIs without hard coding them.
