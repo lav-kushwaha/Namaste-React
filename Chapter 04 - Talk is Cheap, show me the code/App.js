@@ -1884,7 +1884,7 @@ const Body = () => {
                <RestaurantCard key={index} resData={item}/>
               ))
             }
-            {/* NOTE:React doesn't recommended to used index as key. always used id as key. */}
+            {/* NOTE:React doesn't recommended to used indexes of key. always used id as key. */}
             </div>
         </div>
     );
