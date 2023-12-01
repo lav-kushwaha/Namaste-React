@@ -109,7 +109,7 @@ Q. What is render ?
 =>useDebugValue: Helps to display a label in React DevTools for custom hooks.
 
 #What is VirtualDOM ?
-=>VirtualDOM is kind of object which is representation of realDOM or actualDOM.
+=>VirtualDOM is kind of object which is representation of actualDOM.
 =>Whenever the state variable change react will find out the difference between virtualDOM and it will re-render the component and update the DOM.
 
 
@@ -122,13 +122,13 @@ Q: What is React Fiber?
     ->Split work into chunks and prioritize tasks based on importance
 
 Q.What is Reconciliation in React?
-=>Reconciliation is the process through which React updates the Browser DOM and makes React work faster. 
-=>React use a diffing algorithm so that component updates are predictable and faster. 
-=>React would first calculate the difference between the real DOM and the copy of DOM (Virtual DOM) when there's an update of components.
-=>React stores a copy of Browser DOM which is called Virtual DOM. When we make changes or add data, React creates a new Virtual DOM and compares it with the previous one.
-=>Comparison is done by Diffing Algorithm. React compares the Virtual DOM with Real DOM. 
-=>It finds out the changed nodes and updates only the changed nodes in Real DOM leaving the rest nodes as it is. 
-=>This process is called Reconciliation.
+=>Reconciliation (Diff Algorithm): React's reconciliation algorithm compares the new virtual DOM with the previous one to identify the minimal set of changes needed. 
+=>This process optimizes updates to the actual DOM, reducing unnecessary re-renders and enhancing performance.
+=>React does not directly compare the Virtual DOM with the Real DOM.
+=>Instead, it compares the new Virtual DOM with the previous Virtual DOM (created during the previous render).
+=>The purpose of this comparison is to determine the differences (or "diffs") between the two Virtual DOM representations.
+Once React identifies the differences in the Virtual DOM, it calculates the most efficient way to update the actual DOM. The updates are then applied to the Real DOM to reflect the changes in the user interface. This process, known as reconciliation or diffing, is a key part of how React optimizes the rendering and update process for better performance.
+=>This process is know as diffing algorithm or reconciliation algorithm.
 
 
 Q: Difference between Virtual DOM and Real DOM?
