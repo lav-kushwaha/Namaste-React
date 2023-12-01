@@ -1,0 +1,229 @@
+Episode 05 - Let's get Hooked
+
+#Is there a recommended way to structure React projects?
+React doesn’t have opinions on how you put files into folders.
+
+#NOTE : Always write file name which is component name with first letter capital.
+=>Don't write HARDCORDED data inside component make seprate file like - utils-constants,config.js etc.
+#UTILS - Utils are like utility which is used all across of our app.
+
+#There are two types of import and export.
+1.Default import and export.
+2.Named import and export.
+
+=>In Details :
+1.Default import and export. =>In Default import no need to used curly brackets.
+=>export default component or variable name.
+=>import component or variable name from "path"
+
+2.Named import and export. =>In Named import we used curly {} brackets when we import.
+=>export const component or variable;
+=>import {component or variable} from "path"
+
+
+#Tips - In react component don't write a code more than hunderd lines. 
+        =>its an standard practice to keep your component clean and small.
+
+#NOTE - all frameworks and libraries comes in picture - when our Data will change then UI will change - update DOM efficiently.
+Q.Why react is fast ?
+=> Bcz it can do fastest DOM manipulation.
+=> It can do efficient DOM manipulation.
+
+Q. Can we directly change variable in react or not ?
+=>No, you should not directly mutate variables in React. 
+=>Use state and the appropriate state update functions, such as useState hooks, to manage and update state in React components.
+
+example - 
+import React, { useState } from 'react';
+function ExampleComponent() {
+  // Declare a state variable 'count' with an initial value of 0
+  const [count, setCount] = useState(0);
+
+  // Incorrect way: Directly mutating the state variable (don't do this)
+  // count = count + 1;
+
+  // Correct way: Use the state update function to update the state
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={handleIncrement}>Increment</button>
+    </div>
+  );
+}
+export default ExampleComponent;
+
+
+# it's important to distinguish between "regular variables" and "state variables" managed by React.
+=>For regular variables that don't impact the component's rendering or state, you can update them directly.
+=>But for state variables, it's recommended to use the useState hook and the provided updater function to ensure proper handling of state updates and triggering component re-renders.
+
+#In summary:
+Regular Javascript variables: Yes, you can update them directly.
+State variables: Use the useState hook and its updater function to manage state updates.
+
+Q. What is state variable ?
+=>In React, a state variable is a "piece of data" that is used by a component to keep track of its current state. 
+=>The state of a component can change over time due to user interactions, API responses, or other events - ex- onClick. 
+=>React provides the "useState" hook to declare and manage state variables in functional components.
+
+#piece of data=> Array over object - which takes a data - ex- resList
+
+Q. What is the uses of State-variable and regular Js Variable.
+=>State variables are typically used for values that affect the component's rendering and behavior,
+ex -  // State variable using useState
+        const [count, setCount] = useState(0);
+=>while regular variables are used for other data or logic within the component.
+ex -   // Regular variable
+        let msg = "Hello, World!";
+
+
+#NOTE : if we update normal JS varible or regular variable UI will not update but if we update state variable UI will update. 
+=>by using useState Hooks we can update state variable.
+
+Q.What is state ?
+=> In React, state is a JavaScript object that stores data that can be modified over time.
+=> When the state of a component changes, React updates the UI to reflect the new state.
+
+
+Q. What is render ?
+=> whenever state variable update react re-render the components and UI will Update.
+
+#What is React Hooks ?
+=> React Hooks is normal JS functions which gives some utilitis function ex - useState()
+=>In React version 16.8, React introduced a new pattern called Hooks.
+=>React Hooks are simple JavaScript functions that we can use to isolate the reusable part from a functional component. Hooks can be stateful and can manage side-effects. Hooks allow you to reuse stateful logic without changing your component hierarchy. This makes it easy to share Hooks among many components or with the community.
+
+#React provides a bunch of standard in-built hooks:
+=>useState: To manage states. Returns a stateful value and an updater function to update it.
+=>useEffect: To manage side-effects like API calls, subscriptions, timers, mutations, and more.
+=>useContext: To return the current value for a context.
+=>useReducer: A useState alternative to help with complex state management.
+=>useCallback: It returns a memorized version of a callback to help a child component not re-render unnecessarily.
+=>useMemo: It returns a memoized value that helps in performance optimizations.
+=>useRef: It returns a ref object with a current property. The ref object is mutable. It is mainly used to access a child component imperatively.
+=>useLayoutEffect: It fires at the end of all DOM mutations. It's best to use useEffect as much as possible over this one as the useLayoutEffect fires synchronously.
+=>useDebugValue: Helps to display a label in React DevTools for custom hooks.
+
+#What is VirtualDOM ?
+=>VirtualDOM is kind of object which is representation of realDOM or actualDOM.
+=>Whenever the state variable change react will find out the difference between virtualDOM and it will re-render the component and update the DOM.
+
+
+Q: What is React Fiber?
+=>A: React Fiber is a concept of ReactJS that is used to render a system faster, smoother and smarter.
+=>The Fiber reconciler, which became the default reconciler for React 16 and above, is a complete rewrite of React’s reconciliation algorithm to solve some long-standing issues in React. 
+=>Because Fiber is asynchronous, React can:
+    ->Pause, resume, and restart rendering work on components as new updates come in
+    ->Reuse previously completed work and even abort it if not needed
+    ->Split work into chunks and prioritize tasks based on importance
+
+Q.What is Reconciliation in React?
+=>Reconciliation is the process through which React updates the Browser DOM and makes React work faster. 
+=>React use a diffing algorithm so that component updates are predictable and faster. 
+=>React would first calculate the difference between the real DOM and the copy of DOM (Virtual DOM) when there's an update of components.
+=>React stores a copy of Browser DOM which is called Virtual DOM. When we make changes or add data, React creates a new Virtual DOM and compares it with the previous one.
+=>Comparison is done by Diffing Algorithm. React compares the Virtual DOM with Real DOM. 
+=>It finds out the changed nodes and updates only the changed nodes in Real DOM leaving the rest nodes as it is. 
+=>This process is called Reconciliation.
+
+
+Q: Difference between Virtual DOM and Real DOM?
+A: DOM stands for Document Object Model, which represents your application UI and whenever the changes are made in the application, this DOM gets updated and the user is able to visualize the changes. DOM is an interface that allows scripts to update the content, style, and structure of the document.
+
+#Virtual DOM
+The Virtual DOM is a light-weight abstraction of the DOM. You can think of it as a copy of the DOM, that can be updated without affecting the actual DOM. It has all the same properties as the real DOM object, but doesn’t have the ability to write to the screen like the real DOM.
+Virtual DOM is just like a blueprint of a machine, can do the changes in the blueprint but those changes will not directly apply to the machine.
+Reconciliation is a process to compare and keep in sync the two files (Real and Virtual DOM). Diffing algorithm is a technique of reconciliation which is used by React.
+#Real DOM
+The DOM represents the web page often called a document with a logical tree and each branch of the tree ends in a node and each node contains object programmers can modify the content of the document using a scripting language like javascript and the changes and updates to the dom are fast because of its tree-like structure but after changes, the updated element and its children have to be re-rendered to update the application UI so the re-rendering of the UI which make the dom slow all the UI components you need to be rendered for every dom update so real dom would render the entire list and not only those item that receives the update .
+
+#Real DOM       	                                         |      # Virtual DOM
+DOM manipulation is very expensive	                         |      DOM manipulation is very easy
+There is too much memory wastage	                         |      No memory wastage
+It updates Slow	It updates fast                                  |      It updates fast
+It can directly update HTML	                                 |      It can’t update HTML directly
+Creates a new DOM if the element updates                         |      Update the JSX if the element update
+It allows us to directly target any specific node (HTML element) |      It can produce about 200,000 Virtual DOM Nodes / Second.
+It represents the UI of your application	                 |      It is only a virtual representation of the DOM
+
+
+Q.Why react is fast ?
+=>React is fast because react is doing efficient DOM manipulation bcz it has Reconciliation(diff algorithm) which is very efficient.
+#How react is Doing Effiecient DOM manipulation?
+=>React is Doing Effiecient DOM manipulation bcz it has a VirtualDOM.
+=>VirtualDOM is representation of actual DOM or a normal javascript object.
+=>React efficiently find out the difference btw the VirtualDOM and update the UI.
+
+
+# Other way to write useState.
+//State variable - useState Hooks.
+  const[list,setList] = useState(resList);
+
+  //Regular Variable.
+  // const list = resList;
+
+  //Another way to write Usestate.
+  // const arr = useState(resList);
+  //Array destructuring.
+  // const [list,setList] = arr;
+  // const list = arr[0];
+  // const setList = arr[1]
+
+
+
+# How virtualDOM Works?
+In simple terms, the Virtual DOM (Document Object Model) is a lightweight copy of the real DOM in memory. 
+=>React uses this virtual representation to efficiently manage and update the actual DOM in web applications.
+
+#Here's a breakdown of the process:
+
+#Initial Render:
+=>When you create a React component, React builds a virtual representation of the DOM for that component and its children.
+#Updates:
+=>When the state of a component changes, React doesn't immediately update the real DOM. Instead, it first updates the virtual DOM.
+#Reconciliation:
+=>React then compares the updated virtual DOM with the previous one to determine the differences or "diffs" between them.
+#Minimal Updates:
+=>Once React identifies the differences, it calculates the most efficient way to update the real DOM by making only the necessary changes.
+Actual DOM Update:
+
+=>Finally, React updates the actual DOM with only the changes, minimizing the impact on performance.
+The use of the Virtual DOM helps React achieve better performance by reducing the number of direct manipulations to the real DOM. By batching updates and making smart decisions about which parts of the DOM need to be changed, React optimizes the rendering process and provides a smoother user experience.
+
+
+
+# VirtualDOM is object ?
+=>Virtual DOM is the virtual representation of Real DOM. 
+=>React update the state changes in Virtual DOM first and then it syncs with Real DOM. 
+=>the virtual DOM in React is represented as a JavaScript object.
+=>This object is a lightweight, in-memory representation of the actual DOM structure.
+=>Each element in the virtual DOM is an object with properties that describe its type, attributes (such as class names or styles), and relationships with other elements (such as children).
+
+#Here's a simplified example to illustrate the concept:
+
+const virtualDOM = {
+  type: 'div',
+  props: {
+    className: 'container',
+     children: [
+      {
+        type: 'h1',
+        props: {
+          children: 'Hello, React!'
+        }
+      },
+      {
+        type: 'p',
+        props: {
+          children: 'This is a virtual DOM example.'
+        }
+      }
+    ]
+  }
+};
+
+
