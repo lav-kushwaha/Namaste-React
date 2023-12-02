@@ -1,0 +1,107 @@
+Chapter 06 - Exploring the world.
+
+Q.What is monolith architecture ?
+=>A monolithic architecture refers to a traditional software design approach where all the components and functionalities of an application are tightly integrated and deployed as a single unit. 
+=>In a monolithic architecture, the entire application, including the user interface, business logic, and data access layers, is developed, deployed, and scaled as one cohesive unit.
+
+Q.What is microservice ?
+=>Microservices is an architectural approach where a software application is divided into small, independent services that can be developed, deployed, and scaled independently. 
+=>Each service focuses on a specific business capability and communicates with others through well-defined APIs. 
+=>This approach promotes flexibility, scalability, and independent development, but it also introduces challenges related to managing distributed systems.
+#NOte - all the micro-service combined together and forms a big app like backend,ui,auth,database etc.
+=>For each and everything we have an difference project and this known as separation of concern.
+
+
+Q.How UI web apps or UI application fetch the data from backend ?
+=> There are two ways that can be follow :-
+#1St Approach.
+=>when our app loads we can make API call to fetch the data and wait(500ms) for it and then we can render to the UI.
+#2nd Approach.
+=>First we can render the UI after when our UI render then we can make API call to fetch the data and then re-render the UI using data.
+NOTE: In React WE always follow 2nd approach bcz it is better approach why 2nd approach bcz in 1st approach 500ms we dont see anything on webpage and after 500milli second we suddenly see everything thats the poor user-experience UX.
+=>But in 2nd approach we can see atleast skeleton.
+
+Q>What is hooks ?
+=>Its normal javascript function which react gives to us.
+=>It has its own specific useCase.
+
+Q.What is useEffect ?
+=>useEffect is normal function we call this function with 2 arguments.
+1.callback function.
+2.dependencies[] array.
+
+ex - useEffect(()=>{
+    console.log("Hello world");
+},[])
+#When will this useEffect callback function will call?
+=>This callback function is call after the our component render is finished.
+#what is the Purpose of useEffect ?
+=>when we have to call something after the component render is finished ex-API.
+
+Q.What is fetch ?
+=>fetch we are used to fetch data from the api. it is not given to us by javascript.
+=>It is given to us by Browser which has JS engine has.
+
+Q.Why error occors when we are fetching api from swiggy website to our localhost ?
+=> Because our browser blockers block to call api from one origin to different origin that is the cors policy.
+=>To resolve this problem install chrome extension - ALLOW-CORS-Access-control-allow-origin.
+
+Q.How to find any website API ?
+=>Open chrome goto that website which website API you want.
+after inspect chrome browser and goto NETWORK and fetch console.
+#NOTE:before using any website api chrome extension - ALLOW-CORS-Access-control-allow-origin and JSON viewer.
+
+Q.What is JavaScript optional chaining?
+=>Optional chaining (?.) The optional chaining ( ?. ) operator accesses an object's property or calls a function. 
+=>If the object accessed or function called using this operator is undefined or null , the expression short circuits and evaluates to undefined instead of throwing an error.
+
+Q.What is shimmer UI?
+=>A shimmer UI is a version of the UI that doesn't contain actual content, but instead mimics the layout and shapes of the content that will eventually appear.
+=>It uses a gradient animation that creates a shimmering effect over the placeholders, giving the user a sense of motion and progress.
+=>A Shimmer Effect is much in trend to produce an illusional glass effect on articles, texts, or images. 
+=>This might seem a very extravagant property from only some CSS frameworks but the fun part is we can do it using CSS and its properties very easily.
+
+#NOTE : whenever you make website you should used shimmer UI for better user experience.
+=>it is a standard practice.
+
+Q.What is conditional rendering ?
+=>Rendering of the basis of condition is known as conditional rendering.
+
+
+Q.State Variable ?
+=>const[btnName,setbtnName]=useState("Login")
+=>btnName is state varaible and setbtnName is updater function.
+=>whenever the "state" will change (ex- login to logout) by using setbtnName component will re-render.
+=>In React, when you use the useState updater function(setbtnName), the component will re-render every time the state changes. 
+=>This is because React components are designed to re-render when their state or props change, and updating the state triggers this behavior.
+
+Q.This useState is const varaible then How it is updating ?
+=> const[btnName,setbtnName]=useState("Login")
+=> when "setbtnName("Logout") update the state variable" entire component re-render and after re-rendering the component btnName will we change to update state. 
+=>setbtnName("Logout"), React schedules a re-render of the component with the new value for btnName.
+=>Even though btnName is declared with const, the value of btnName itself is mutable, and it can be updated through the setbtnName("Logout") function. 
+=>React takes care of re-rendering the component with the updated state value.
+=>React is keeping track of everything.
+
+#PRO-TIPS:How do we need, Why we used, and When it is need, is very Important whenever you are learning anything.
+=>Take depth knowledge of everything don't be like if i write this code it will display on UI like this.
+=>When u dont have depth knowledge u will think my code is right but i dont know why i am getting error. 
+
+
+
+#About React Rendering.
+=>React is re-rendering the whole component(ex-body component) and it is only updated the input value inside the DOM.
+=>DOM manipulation is very expensive but react is very efficient to doing this.
+
+
+Q.How to make Search ?
+=>Used 3 Usestate Hooks
+=>const[list,setList] = useState([]);=>It contain all the data from the api and we filter by using "list" state varaible.
+=>setList(api) in this updater function we passed main api.
+=>const[filterList,setFilterList] = useState([]); => and passed in setFilterList(list.filter((item)=>item.name.toLowerCase().includes(search.toLowerCase()))).
+=> and filterList we used to display UI.
+=>=>setFilterList(api) in this updater function we passed main api.
+=>const[search,setSearch] = useState(""); =>It takes input data from input field and we passed this search into value={search}.
+#In addtion :
+=>we used onClick on search.
+=>we used onChange((e)=>e.target.value)

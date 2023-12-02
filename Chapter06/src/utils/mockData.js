@@ -1454,7 +1454,7 @@ const resList = [
       data: {
         type: "F",
         id: "64656",
-        name: "Pavbhaji",
+        name: "Mahesh Pav Bhaji",
         uuid: "ccfda4b9-82b1-4f22-9567-eb98c448b267",
         city: "21",
         area: "Adajan",
@@ -1816,6 +1816,6 @@ const resList = [
       subtype: "basic",
     },
   ];
-let search = "Pavbhaji"
-const result = resList.filter((item)=>item.data.name == search )
-console.log(result);
+
+
+export default resList;
