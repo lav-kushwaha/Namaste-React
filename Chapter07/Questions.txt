@@ -1,0 +1,117 @@
+Chapter 07 - Finding the Path.
+
+#About UseEffect Hooks ?
+#Point 1.
+UseEffect(()=>{
+    console.log("Hello")
+})
+=>If no dependencies array=> UseEffect is called after every component render.
+
+#Point 2.
+UseEffect(()=>{
+    console.log("Hello")
+},[UseEffect render only once after the component render])
+
+=>If there is dependencies array empty [], UseEffect is called only intial component render and just once.
+
+#NOTE : The basic nature and the default behaviour of UseEffect is it is render everytime when the component is render.
+=>But if there is empty array [] dependencies UseEffect called only once after component render is finished.-
+
+#Point 3.
+UseEffect(()=>{
+    console.log("Hello")
+},[btnName])
+=>if dependencies array is [btnName] => UseEffect Called everytime when [btnName] is updated.
+
+#About UseState Hooks ?
+=>UseState() is always used to create local state variable inside our functional component.
+#Good Practice to use - Hooks.
+=>Always try to use, UseState on top when the function start bcz js is a synchronous single threaded language the code will run line by line.
+=>Never use - UseState variable inside if-else condition and function, it is perfectly valid code js allow to do this but don't do this it can create inconsistency in our program.
+
+===============================================++++++++++++++++++++++++++++============================================================================
+
+#React-RouterDOM.
+=>React Router is a lightweight, fully-featured routing library for the React JavaScript library.
+=>It enables the creation of single-page web or mobile apps that allow navigating without refreshing the page. 
+
+Q.How to install ReactRouter DOM?
+=>npm i react-router-dom.
+
+Q.Why use React router?
+#Need for React Router
+=>It enables the creation of single-page web or mobile apps that allow navigating without refreshing the page. 
+
+Q.What Configuration in react RouterDOM ?
+=>An information that will tell to the browser router what will happen on specific path.
+=>ex - what will happen when i called that URL or Path for ex-About.
+
+Q.Best Practice and recommendation to use createBrowserRouter?
+=>This is the recommended router for all React Router web projects.
+=>It uses the DOM History API to update the URL and manage the history stack.
+It also enables the v6.4 data APIs like loaders, actions, fetchers and more.
+
+Q.what is createBrowserRouter ?
+=>import{createBrowserRouter} from "react-router-dom"
+=>createBrowserRouter takes array over object and inside object it takes a list of path.
+ex - createBrowserRouter([
+    {
+        path:"/", // show path for routing
+        element:<AppLayout/>,// show component for particular path
+        errorElement:<Error/>  // show error component for path is different or not match
+    },
+])
+Q.What is errorElement in reactRouterDOM ?
+=>show error component for path is different or not match.
+
+Q.What is RouterProvider ?
+=>import{createBrowserRouter,RouterProvider} from "react-router-dom"
+=>RouterProvider is provide routing configuration to our app.
+#render RouterProvider and use router as props and pass value appRouter.
+=>root.render(<RouterProvider router={appRouter}/>);
+
+Q.What is useRouteError in react ?
+=>useRouteError is react-router-dom hooks.
+=>By using this useRouteError it is giving more information and details about the error to user. 
+=>ex-import {useRouteError} from 'react-router-dom';
+//Call- useRouteError() inside error component ex-Error.js.
+=> const err = useRouteError(); 
+=>console.log(err) after you will see the all the properties of useRouteError() and used accordingly.
+
+Q.What is outlet or outlet component in react-router-dom?
+=>The React Router <Outlet/> component (from react-router-dom ) is used within the parent route element to indicate where a child route element should be rendered.
+#Why outlet is used in React?
+=>An <Outlet> should be used in parent route elements to render their child route elements. 
+=>This allows nested UI to show up when child routes are rendered.
+
+#IMPORTANT THINGS ABOUT ROUTER:
+=>Whenever you are using react and you want to route some another page never used anchor a tag.
+Q.Why never used anchor tag?
+=>Because by using anchor tag if we navigating to another page the whole page is reloading thats why.
+
+NOTE:By using react-router-dom or "Link" we can navigate one page to another page without re-loading whole page.
+=>Its make our website single page.
+
+Q.What is Link or Link Component in react router dom ?
+=>A <Link> is an element that lets the user navigate to another page by clicking or tapping on it. 
+=>In react-router-dom , a <Link> renders an accessible <a> element with a real href that points to the resource it's linking to.
+
+Q.Why we can used Link instead of anchor tag ?
+=>Link are used to smoothly navigate to one page to another page without re-loading whole page.
+
+Q.What is single page application ?
+=>A single-page application is an app that doesn't need to reload the page during its use and works within a browser. 
+=>Think of the apps you use daily: Facebook, Google Maps, Gmail, Twitter, Google Drive, or even GitHub. All these are examples of a SPA
+
+Q.How react is single page application (SPA) ?
+=>React is single page application beacause if we go to new route or new path only components are interchanging them self from one component (ex- App.js or AppLayout) everything is component in react.
+=>Only from one component(AppLayout or App.js) if we goto new route it just interchange the component its not reloading a new page thats why we call single page application.
+=>This is achieved through client-side routing (handled by tools like React Router), where components dynamically change based on the route, creating a seamless and faster user experience compared to traditional multi-page applications.
+=>In react, Just One Component(Page) only component get interchanging via a client side routing its known as SPA. 
+
+Q.How many types of routing in web application ?
+There are generally two types of routing in web applications:
+1.client-side routing and
+2.server-side routing.
+=>client-side routing happens within the user's browser and provides a smoother, faster user experience,
+=>while server-side routing occurs on the server, determining which page to send to the user based on the URL, and is often preferred for SEO purposes.

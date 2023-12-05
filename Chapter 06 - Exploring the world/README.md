@@ -1,4 +1,4 @@
-//Rajkot Loacation API.
+//Rajkot Location API.
 // https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.2920121&lng=70.7874667&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING
 
 //Another Swiggy API.

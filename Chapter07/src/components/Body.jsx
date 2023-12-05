@@ -27,7 +27,7 @@ const Body = () => {
 
   //Filteration Logic.
   const FilterCard =()=>{
-     const ratingsFilter = list.filter((item)=>item.avgRating > 4)
+     const ratingsFilter = list.filter((item)=>item.avgRating > 4.3)
      setFilterList(ratingsFilter)
   }
 

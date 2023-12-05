@@ -18,7 +18,8 @@ Q.How UI web apps or UI application fetch the data from backend ?
 =>when our app loads we can make API call to fetch the data and wait(500ms) for it and then we can render to the UI.
 #2nd Approach.
 =>First we can render the UI after when our UI render then we can make API call to fetch the data and then re-render the UI using data.
-NOTE: In React WE always follow 2nd approach bcz it is better approach why 2nd approach bcz in 1st approach 500ms we dont see anything on webpage and after 500milli second we suddenly see everything thats the poor user-experience UX.
+NOTE: In React WE always follow 2nd approach bcz it is better approach.
+ why 2nd approach bcz in 1st approach 500ms we dont see anything on webpage and after 500milli second we suddenly see everything thats the poor user-experience UX.
 =>But in 2nd approach we can see atleast skeleton.
 
 Q>What is hooks ?
@@ -43,7 +44,7 @@ Q.What is fetch ?
 =>It is given to us by Browser which has JS engine has.
 
 Q.Why error occors when we are fetching api from swiggy website to our localhost ?
-=> Because our browser blockers block to call api from one origin to different origin that is the cors policy.
+=>Because our browser blockers block to call api from one origin to different origin that is the cors policy.
 =>To resolve this problem install chrome extension - ALLOW-CORS-Access-control-allow-origin.
 
 Q.How to find any website API ?
@@ -54,6 +55,8 @@ after inspect chrome browser and goto NETWORK and fetch console.
 Q.What is JavaScript optional chaining?
 =>Optional chaining (?.) The optional chaining ( ?. ) operator accesses an object's property or calls a function. 
 =>If the object accessed or function called using this operator is undefined or null , the expression short circuits and evaluates to undefined instead of throwing an error.
+=>Optional Chaining (?.) operator accesses an object's property or calls a function. If the object accessed or function called is undefined or null , it returns undefined instead of throwing an error. Optional Chaining (?.) is good way of accessing the object keys, it prevents the application from being crashed if the key that we are trying to access is not present. 
+=>If the key is not present then instead of a throwing key error, it returns undefined.
 
 Q.What is shimmer UI?
 =>A shimmer UI is a version of the UI that doesn't contain actual content, but instead mimics the layout and shapes of the content that will eventually appear.
