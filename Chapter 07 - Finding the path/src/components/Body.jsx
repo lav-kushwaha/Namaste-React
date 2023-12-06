@@ -12,7 +12,6 @@ const Body = () => {
   const[search,setSearch] = useState("");
 
   // console.log(list)
-
   useEffect(()=>{
     fetchData();
   },[])
