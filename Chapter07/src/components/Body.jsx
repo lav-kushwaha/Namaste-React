@@ -2,6 +2,8 @@ import RestaurantCard from "./Restaurantcard";
 // import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import{Link} from "react-router-dom"
+import { RESTAURANTS_API } from "../utils/constant";
 
 const Body = () => {
   //State variable - useState Hooks.
@@ -11,16 +13,15 @@ const Body = () => {
 
   // console.log(list)
 
-
   useEffect(()=>{
     fetchData();
   },[])
 
   const fetchData = async () =>{
-      const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.2920121&lng=70.7874667&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      const data = await fetch(RESTAURANTS_API);
       const json = await data.json();
       //optional chaining.
-       restaurantInfo = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.map((item)=>item?.info);
+      const restaurantInfo = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.map((item)=>item?.info);
       setList(restaurantInfo)
       setFilterList(restaurantInfo)
   }
@@ -33,7 +34,7 @@ const Body = () => {
 
   //Reset Button.
   const ResetFilter =()=>{
-    setFilterList(restaurantInfo)
+    setFilterList(list)
   }
 
   //Search Functionality.
@@ -55,7 +56,8 @@ const Body = () => {
 
     return(
         list.length == 0 ? (<Shimmer/>):(
-        <div className='Body'>
+        <div className="body-section">
+          <div className='Body'>
             <div className='filter'>
               <div className="search">
                 <input type="text" 
@@ -70,11 +72,15 @@ const Body = () => {
             <div className='res-container'>            
             {
               filterList.map((item)=>(
-               <RestaurantCard key={item.id} resData={item}/>
+                //path:"/restaurants/:resID", element:<RestaurantMenu/>
+                //Key should be on the parent Jsx that we map.
+                <Link key={item.id} to={`restaurants/${item.id}`}><RestaurantCard resData={item}/></Link>
               ))
             }
             </div>
         </div>
-    ));
+        </div>
+    )
+    );
 }
 export default Body;

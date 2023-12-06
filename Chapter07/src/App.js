@@ -6,6 +6,7 @@ import {createBrowserRouter,Outlet,RouterProvider} from "react-router-dom"
 import About from './components/About';
 import Contact from './components/contact';
 import Error from './components/Error'
+import RestaurantMenu from './components/RestaurantMenu';
 
 //App Layout.
 const AppLayout = () =>{
@@ -39,6 +40,11 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      // {/*Dynamic Route and Dynamic Component */}
+      {
+        path:"/restaurants/:resID",
+        element:<RestaurantMenu/>
       }
     ],
     errorElement: <Error />, // show error component for path is different or not match.

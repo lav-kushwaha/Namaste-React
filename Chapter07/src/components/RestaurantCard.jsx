@@ -1,4 +1,5 @@
-import CDN_LINK from "../utils/constant";
+import {CDN_LINK} from "../utils/constant";
+
 const RestaurantCard = ({resData}) =>{
     // const{resData} = props;
     const{name,cuisines,avgRating,costForTwo,sla,cloudinaryImageId} = resData;
@@ -9,7 +10,7 @@ const RestaurantCard = ({resData}) =>{
             <div className='card-details'>
              <h3>{name}</h3>
              <p>{cuisines.join(", ")}</p>
-             <p>{avgRating} ⭐</p> 
+             <p>⭐{avgRating}</p> 
              <p>{costForTwo}</p> 
              <p>{sla.deliveryTime} minutes</p> 
             </div>

@@ -29,6 +29,27 @@ UseEffect(()=>{
 =>Always try to use, UseState on top when the function start bcz js is a synchronous single threaded language the code will run line by line.
 =>Never use - UseState variable inside if-else condition and function, it is perfectly valid code js allow to do this but don't do this it can create inconsistency in our program.
 
+Q.How useEffect is called with emptyArray dependencies.
+
+const RestaurantMenu = () => {
+
+    console.log("Component rendered")
+
+    useEffect(()=>{
+        fetchMenu()
+        console.log("useEffect")
+    },[])
+
+    return(
+        <h1>Hello</h1>
+    )
+}
+
+#console output:
+=> Component rendered.
+=> useEffect -> whenever this useEffect call component again re-render.
+=> Component rendered.
+
 ===============================================++++++++++++++++++++++++++++============================================================================
 
 #React-RouterDOM.
@@ -72,7 +93,8 @@ Q.What is RouterProvider ?
 
 Q.What is useRouteError in react ?
 =>useRouteError is react-router-dom hooks.
-=>By using this useRouteError it is giving more information and details about the error to user. 
+=>By using this useRouteError it is giving more information and details about the error to user.
+=>useRouteError is give the information about error that we have. 
 =>ex-import {useRouteError} from 'react-router-dom';
 //Call- useRouteError() inside error component ex-Error.js.
 => const err = useRouteError(); 
@@ -95,6 +117,8 @@ NOTE:By using react-router-dom or "Link" we can navigate one page to another pag
 Q.What is Link or Link Component in react router dom ?
 =>A <Link> is an element that lets the user navigate to another page by clicking or tapping on it. 
 =>In react-router-dom , a <Link> renders an accessible <a> element with a real href that points to the resource it's linking to.
+=>Link is a component which is given to us by react router dom and behind the scene link using anchor tag.
+=>Link is a wrapper over anchor tag.
 
 Q.Why we can used Link instead of anchor tag ?
 =>Link are used to smoothly navigate to one page to another page without re-loading whole page.
@@ -115,3 +139,15 @@ There are generally two types of routing in web applications:
 2.server-side routing.
 =>client-side routing happens within the user's browser and provides a smoother, faster user experience,
 =>while server-side routing occurs on the server, determining which page to send to the user based on the URL, and is often preferred for SEO purposes.
+
+Q. What is UseParams in react-router-dom ?
+=> UseParams is a hooks which is given by reactRouterDOM.
+=> import { useParams } from "react-router-dom";
+=>  // params is an object of {resID: '20'} which is a path:"/restaurants/:resID", of element:<RestaurantMenu/>.
+    // const params = useParams();
+
+    //Object destructuring.
+    const {resID} = useParams();
+    // console.log(resID); //20
+
+
