@@ -1,0 +1,68 @@
+Chapter 07 - Let Get Classy.
+
+Q.What is class Based Components ?
+=>Its a normal js class.
+#How create class based componet ?
+ =>This extends React.Component will make react know this is class based componet.
+ =>Class componet have Render(){} method which is return some piece of jsx to display the UI. 
+=> ex -
+import React from 'react'
+class UserClass extends React.Component{
+      render(){
+          return(
+             <div>
+                <h2>Hello world</h2>
+             <div/>
+          ) 
+      }
+} 
+//2nd way to create class by Destructuring React.Component to {Component}
+import {Component} from 'react'
+class UserClass extends Component{
+      render(){
+          return(
+             <div>
+                <h2>Hello world</h2>
+             <div/>
+          ) 
+      }
+} 
+
+Q.What is React.Component ?
+=>React.component is basically a class which is given to us by react and UserClass is inheriting some properties on it.
+
+Q.How to receive props in class component?
+=>if we have to receive props in class component we used constructor and super(props) keyword in class component.
+=>ex-
+class UserClass extends from React.Component{
+    constructor(props){
+        super(props)
+        console.log(props)
+    }
+    render(){
+        //Destructuring props object.
+        const{name,location} = this.props
+        return(
+            <h2>Hello world</h2>
+            //we are using this keyword to receive props.
+            <h2>{name}</h2>
+            <h3>{location}</h3>
+        )
+    }
+}
+
+Q.Why do we need super(props) in class component ?
+=>By using the super constructor with a props argument, the component is able to inherit the properties of the parent component and also access the new props that have been passed in. 
+=>This allows the component to make use of the properties of both the parent component and the new props in its render method.
+=>allows accessing this. props in a Constructor function. 
+=>In fact, what the super() function does is, calls the constructor of the parent class.
+
+
+Q.What is this.setState ?
+=>this.setState({}) are used to update state variable in class component.
+=>this.setState({}) takes object and that object takes a variable which is we have to update.
+ex-  <button onClick={()=>this.setState(
+            {
+                count:this.state.count+1,
+            }
+        )}>Click Me</button>
