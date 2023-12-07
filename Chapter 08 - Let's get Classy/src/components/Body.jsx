@@ -16,6 +16,8 @@ const Body = () => {
     fetchData();
   },[])
 
+
+
   const fetchData = async () =>{
       const data = await fetch(RESTAURANTS_API);
       const json = await data.json();
@@ -27,7 +29,7 @@ const Body = () => {
 
   //Filteration Logic.
   const FilterCard =()=>{
-     const ratingsFilter = list.filter((item)=>item.avgRating > 4.3)
+     const ratingsFilter = list.filter((item)=>item.avgRating > 4)
      setFilterList(ratingsFilter)
   }
 
