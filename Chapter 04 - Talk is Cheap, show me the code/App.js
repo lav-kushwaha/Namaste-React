@@ -2,8 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import logo from './images/logo.png'
 
-
-//Header
 const Header = () =>{
     return (
         <div className='header'>
@@ -21,7 +19,6 @@ const Header = () =>{
         </div>
     );
 }
-
 
 // Restaurant card component: Image, name, cuisine etc.
 const RestaurantCard = (props) =>{
@@ -45,7 +42,7 @@ const RestaurantCard = (props) =>{
     );
 }
 
-//Restaurant-Data.
+//Restaurant-mockData.
 const resList = [
     {
       type: "restaurant",
