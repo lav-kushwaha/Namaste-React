@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import{Link} from "react-router-dom"
 import { RESTAURANTS_API } from "../utils/constant";
+import useOnlinestatus from "../utils/useOnlinestatus";
+import InternetConnectionChecker from "./Nointernet";
 
 const Body = () => {
   //State variable - useState Hooks.
@@ -43,6 +45,9 @@ const Body = () => {
     const searching = list.filter((item)=>item.name.toLowerCase().includes(search.toLowerCase()))
     setFilterList(searching);
   }
+
+  const status = useOnlinestatus();
+  if(status === false) return <InternetConnectionChecker/>
 
     return(
         list.length == 0 ? (<Shimmer/>):(

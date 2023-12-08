@@ -235,3 +235,20 @@ p {
 .menu img{
    width:20%;
 }
+
+/* InternetConnection-Checker Css */
+/* Add this CSS to your main stylesheet or component style */
+
+.status-container {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.status-container p {
+  margin: 0;
+  color:white;
+}

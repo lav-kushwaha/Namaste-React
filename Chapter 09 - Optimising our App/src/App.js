@@ -1,20 +1,22 @@
-import React from 'react'
+import React,{lazy,Suspense} from 'react'
 import ReactDOM from 'react-dom/client'
 import Header from './components/Header';
 import Body from './components/Body';
 import {createBrowserRouter,Outlet,RouterProvider} from "react-router-dom"
 import About from './components/About';
-import Contact from './components/contact';
+// import Contact from './components/contact';
 import Error from './components/Error'
 import RestaurantMenu from './components/RestaurantMenu';
+
+
+//Lazy Loading -
+const Contact = lazy(()=>import('./components/contact'));
 
 //App Layout.
 const AppLayout = () =>{
     return(
         <div className='app'>
             <Header/>
-            {/* Outlet is display path from the children according to path.
-             ex- if path is slash "/" then <Body/> component will be display from the children*/}
             <Outlet/>
         </div>
     )
@@ -22,12 +24,8 @@ const AppLayout = () =>{
 
 const appRouter = createBrowserRouter([
     {
-    //show path for routing if path is slash "/" then <AppLayout/> will be display.
     path: "/",
-    //AppLayout is Parent.
     element: <AppLayout />, 
-    // show component for particular path.
-    // "childen" is a children of AppLayout.
     children:[
       {
         path: "/",
@@ -39,12 +37,16 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Contact />,
+        element: <Suspense fallback={<h1>Loading...</h1>}>
+                    <Contact />
+                 </Suspense>     
       },
       // {/*Dynamic Route and Dynamic Component */}
       {
         path:"/restaurants/:resID",
-        element:<RestaurantMenu/>
+        element:<Suspense fallback={<h1>Loading...</h1>}>
+                <RestaurantMenu/>
+               </Suspense>
       }
     ],
     errorElement: <Error />, // show error component for path is different or not match.

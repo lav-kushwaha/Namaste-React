@@ -149,5 +149,5 @@ Q. What is UseParams in react-router-dom ?
     //Object destructuring.
     const {resID} = useParams();
     // console.log(resID); //20
-
+=>It is used to get parameters from the URL.
 
