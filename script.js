@@ -1818,4 +1818,4 @@ const resList = [
   ];
 let search = "Pavbhaji"
 const result = resList.filter((item)=>item.data.name == search )
-console.log(result);
+console.log(result); 
