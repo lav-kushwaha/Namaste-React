@@ -18,7 +18,6 @@ import ReactDOM from 'react-dom/client'
 //      </h1>
 //      );
 
-
 //Functional Components.
 
 // const Tittle = () => <h1 className='Heading'>Hello Functional Components in single line.</h1>
