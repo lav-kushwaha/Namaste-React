@@ -1,1 +1,81 @@
-Chapter 10 - Jo dikhta hai, vo bikta hai
+Chapter 10 - Jo dikhta hai, vo bikta hai.
+
+#NOTE : SAAS,SCSSS and CSS are not recommended to used for styling.
+
+#recommended for style in react.
+=>Styled-Components.
+
+There are many framework and library for style 
+#example -
+=>MUI
+=>Ant Design
+=>Saas/SCSS
+=>Styled Components
+=>Chakra UI.
+
+
+Q.What is Tailwind css.
+=>Tailwind CSS is basically a utility-first CSS framework for rapidly building custom user interfaces. 
+=>Tailwind CSS is best used to speed up the development process by writing less code.
+=>Tailwind CSS provides a set of pre-designed utility classes that you can apply directly in your HTML markup to define styles.
+
+#Installation Of Tailwind CSS.
+=>Website-Link : https://tailwindcss.com/docs/installation/framework-guides
+
+#Framework-guides:Pracel
+
+=>Command For Installation :
+=>Install Tailwind CSS
+=>Install tailwindcss and its peer dependencies via npm, and then run the init command to generate tailwind.config.js.
+
+Steps:
+
+ -npm install -D tailwindcss postcss
+ -npx tailwindcss init
+=>When we used this command :
+    -It will automatic created.
+    -tailwind.config.js file
+
+=>For PostCSS configure file :
+    #Configure PostCSS
+    - Create a .postcssrc file in your project root, and enable the tailwindcss plugin.
+    - we have to create file called
+            .postcssrc file
+
+=>Put this inside index.css
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+
+Q.What is postcss ?
+=>PostCSS is a software development tool that uses JavaScript-based plugins to automate routine CSS operations.
+=>PostCSS a tool for transforming CSS with JavaScript.
+=>Tailwind Css uses PostCSS behind the scene.
+
+Q.What will postcssrc do?
+=>If you have to used tailwind so parcel need to used .postcssrc to read tailwind.
+
+Q.What is Tailwind ?
+=> content: [
+    "./src/**/*.{html,js,ts,jsx,tsx}",
+  ],
+=>This content means we can used tailwind  "./src/**/*.{html,js,ts,jsx,tsx}" with any of this file extension inside ./src
+
+
+Q.What is the advantages of tailwind css ?
+=>Speedy Development: Instead of switching between HTML and CSS files, you can design directly within your markup, making the development process quicker. ...
+=>Consistency: 
+=>Customizable: 
+=>Reduced CSS Bloat: 
+=>Responsiveness Made Easy:
+=>Integration with Modern Tools:
+=>It will only include the css that is require - minimum css this the major advantages.
+
+#Is Tailwind SEO friendly?
+=>SEO: Tailwind CSS is SEO friendly, as it does not add any unnecessary markup to your HTML. 
+=>This can help to improve your website's ranking in search engines
+
+Q.Why is Tailwind better than CSS ?
+=>Tailwind is a modern CSS framework that offers several advantages over traditional CSS.
+=>Its utility-first approach and pre-defined classes make styling HTML components faster, more efficient, and more consistent.

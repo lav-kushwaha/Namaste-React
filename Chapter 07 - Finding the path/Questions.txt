@@ -142,6 +142,7 @@ There are generally two types of routing in web applications:
 
 Q. What is UseParams in react-router-dom ?
 => UseParams is a hooks which is given by reactRouterDOM.
+=>RestaurantMenu.jsx
 => import { useParams } from "react-router-dom";
 =>  // params is an object of {resID: '20'} which is a path:"/restaurants/:resID", of element:<RestaurantMenu/>.
     // const params = useParams();
@@ -151,3 +152,13 @@ Q. What is UseParams in react-router-dom ?
     // console.log(resID); //20
 =>It is used to get parameters from the URL.
 
+//Body.jsx
+  <div className='res-container'>            
+            {
+              filterList.map((item)=>(
+                //path:"/restaurants/:resID", element:<RestaurantMenu/>
+                //Key should be on the parent Jsx that we map.
+                <Link key={item.id} to={`restaurants/${item.id}`}><RestaurantCard resData={item}/></Link>
+              ))
+            }
+ </div>

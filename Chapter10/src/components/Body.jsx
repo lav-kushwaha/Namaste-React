@@ -1,5 +1,4 @@
 import RestaurantCard from "./Restaurantcard";
-// import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import{Link} from "react-router-dom"
@@ -17,7 +16,6 @@ const Body = () => {
   useEffect(()=>{
     fetchData();
   },[])
-
 
 
   const fetchData = async () =>{
@@ -52,23 +50,26 @@ const Body = () => {
     return(
         list.length == 0 ? (<Shimmer/>):(
         <div className="body-section">
-          <div className='Body'>
-            <div className='filter'>
-              <div className="search">
+          <div className='body'>
+            <div className='filter flex'>
+              <div className="search py-8 ml-40 ">
                 <input type="text" 
-                placeholder="search for restaurant and food"
-                 value={search} 
-                 onChange={(e)=>setSearch(e.target.value)}/>
-                  <button onClick={SearchFood}>Search</button>
+                  className="border-solid border-gray p-2 w-60 rounded-s-lg focus:outline-blue-500"
+                  placeholder="search for restaurant and food"
+                  value={search} 
+                  onChange={(e)=>setSearch(e.target.value)}
+                  />
+                  <button className="w-40 py-2 bg-blue-500 rounded-e-lg text-white"
+                   onClick={SearchFood}>Search</button>
               </div>
-              <button className="filter-btn" onClick={FilterCard}>Top Rated Restaurant</button>
-              <button className="filter-btn" onClick={ResetFilter}>Reset</button>
+             <div className="flex items-center ml-10 gap-4">
+              <button className="px-5 py-2 bg-gray-100 rounded-lg" onClick={FilterCard}>Top Rated Restaurant</button>
+              <button className="px-5 py-2 bg-gray-100 rounded-lg" onClick={ResetFilter}>Reset</button>
+             </div>
               </div>
-            <div className='res-container'>            
+            <div className='flex'>            
             {
               filterList.map((item)=>(
-                //path:"/restaurants/:resID", element:<RestaurantMenu/>
-                //Key should be on the parent Jsx that we map.
                 <Link key={item.id} to={`restaurants/${item.id}`}><RestaurantCard resData={item}/></Link>
               ))
             }

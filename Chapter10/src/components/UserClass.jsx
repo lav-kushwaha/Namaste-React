@@ -23,7 +23,6 @@ class UserClass extends React.Component {
             userInfo:Json 
         })
     }
-    
 
     render(){
         const{name,location,avatar_url} = this.state.userInfo;
