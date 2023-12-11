@@ -54,12 +54,12 @@ const Body = () => {
             <div className='filter flex'>
               <div className="search py-8 ml-40 ">
                 <input type="text" 
-                  className="border-solid border-gray p-2 w-60 rounded-s-lg focus:outline-blue-500"
+                  className="border border-solid border-gray p-2 w-60 rounded-s-lg focus:outline-blue-500"
                   placeholder="search for restaurant and food"
                   value={search} 
                   onChange={(e)=>setSearch(e.target.value)}
                   />
-                  <button className="w-40 py-2 bg-blue-500 rounded-e-lg text-white"
+                  <button className="w-32 py-2 bg-blue-500 rounded-e-lg text-white"
                    onClick={SearchFood}>Search</button>
               </div>
              <div className="flex items-center ml-10 gap-4">
@@ -67,7 +67,7 @@ const Body = () => {
               <button className="px-5 py-2 bg-gray-100 rounded-lg" onClick={ResetFilter}>Reset</button>
              </div>
               </div>
-            <div className='flex'>            
+            <div className='flex flex-wrap justify-center item-center gap-[3vw]'>            
             {
               filterList.map((item)=>(
                 <Link key={item.id} to={`restaurants/${item.id}`}><RestaurantCard resData={item}/></Link>

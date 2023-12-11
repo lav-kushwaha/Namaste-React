@@ -1,0 +1,161 @@
+Episode 09 - Optimising our App.
+
+Q.What is modularity ?
+=>modularity means that you break down to your code into different-different small small module.
+=>So, Distribution your code into smaller-samller pieces and keeping it modular
+ makes your code -
+ =>This thing happen if we follow single responsiable principal.
+-More resusable 
+-Testable
+-Maintainable
+
+Q.What is the responsibility of component ?
+=>The major responsibility of component to displaying the data not fetching the data for fetching data we can make our own custom hook.
+
+Q.What is custom hook ?
+=>Hooks are reusable functions. When you have component logic that needs to be used by multiple components, we can extract that logic to a custom Hook.
+=>Creating a custom hook is the same as creating a JavaScript function whose name starts with “use”
+=>Example - fetching the data logic inside our custom hooks.
+import { useEffect, useState } from "react"
+import { MENU_LINK } from "./constant";
+//custom hook
+#RestaurantMenu.jsx
+ const {resID} = useParams();
+//custom Hooks.
+const menu = useRestaurantMenu(resID);
+
+#useRestaurant.jsx 
+const useRestaurantMenu = (resID) =>{
+    const [resList,setRestList] = useState(null)
+
+    useEffect(()=>{
+        fetchData();
+    },[])
+
+    //Fetching Data.
+    const fetchData = async()=>{
+        const data = await fetch(MENU_LINK + resID);
+        const json = await data.json();
+        setRestList(json.data);
+    }
+
+    return resList;
+}
+export default useRestaurantMenu;
+
+#NOTE : why we are making custom hooks for fetching data?
+=>We are made this fetching data menu bcz if something error in fetching data i can directly check that component where i have fetch data component.
+=>and if something error to displaying data i can directly check where i have made component for displaying data.
+
+
+#How to think how write thoughts in the code when we are creating custom hook?
+=>Finalize the contract- 
+#contract :-
+-what is the input of the hook and output.
+
+Q.What is window eventListener ?
+=>It will keep track of when the internet is online and when the internet is offline.
+=>It is a superpower which is given to us by window and browser.
+ex -import { useEffect, useState } from "react";
+
+const useOnlinestatus = ()=>{
+
+    const[Onlinestatus,setOnlinestatus] = useState(true)
+
+    useEffect(()=>{
+        window.addEventListener("online",()=>{
+            setOnlinestatus(true)
+        })
+        window.addEventListener("offline",()=>{
+            setOnlinestatus(false)
+        })
+    },[])
+
+    return Onlinestatus;
+}
+
+export default useOnlinestatus;
+
+#NOTE:You cant build large frontend application if you will not take care of your bundlers - bundler is like minizing your whole website into one file. ex -index.js.
+=> Your app will become very slow your home page will take a huge time to load.
+=>So, you have to keep this in mind you have to break down your app into smaller pieces or smaller bundles.
+=>This process is known as chunking
+ or code splitting,
+ dynamic bundling,
+ lazy loading,
+ on demand loading,
+ dynamic import. this all are same concept different name.
+
+Q.What is Lazy Loading ?
+=>Lazy loading in React refers to the practice of loading components, modules, or assets only when they are actually needed, instead of loading everything up front.
+=>This can help improve the performance of your application by reducing the initial bundle size and loading time.
+=>React provides a built-in feature called React.lazy() that allows you to load components lazily. With React.lazy(), you can dynamically import a component and use it in your application. 
+=>This is particularly useful for optimizing the loading of components that are not needed immediately when the application starts.
+
+#2nd Defination:
+=>In React, lazy loading involves loading components or assets only when they are needed, rather than all at once. 
+=>It helps improve performance by reducing the initial loading time of your application.
+=> React provides the React.lazy() function for lazy loading components, and the <Suspense> component to handle the loading state.
+=> This is beneficial for code-splitting, which breaks down your bundle into smaller chunks loaded on-demand, enhancing the user experience in larger applications.
+
+#Summary :
+=>Keep in mind that lazy loading with React.lazy() is typically used for code-splitting, which allows you to split your bundle into smaller chunks that can be loaded on-demand(when user click on that component), improving the initial loading performance of your application.
+=>Lazy loading is especially beneficial in larger applications where loading all components upfront might result in a slower user experience.
+
+Q.What is Lazy Loading Syntax ?
+=>1. React.lazy():
+=>The React.lazy() function allows you to lazily load a component.
+=> It takes a function that returns a dynamic import() statement.
+=>const MyLazyComponent = React.lazy(() => import('./MyLazyComponent'));
+
+=>React.lazy(() => import('./MyLazyComponent')): This line dynamically imports the MyLazyComponent module.
+=>The function passed to React.lazy() should return a dynamic import() statement pointing to the file where the component is located.
+
+=>2. <Suspense>:
+=>To handle the loading state and provide a fallback UI while the lazy-loaded component is being loaded, you wrap the lazy-loaded component with the <Suspense> component.
+=>example -
+import React, { Suspense } from 'react';
+const App = () => (
+  <div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <MyLazyComponent />
+    </Suspense>
+  </div>
+);
+=><Suspense>: This component is used to wrap the lazy-loaded component. It specifies a fallback UI (in this case, a simple "Loading..." message) that will be displayed while the lazy-loaded component is being loaded.
+
+#Complete Example:
+import React, { lazy, Suspense } from 'react';
+
+const MyLazyComponent = lazy(() => import('./MyLazyComponent'));
+
+const App = () => (
+  <div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <MyLazyComponent />
+    </Suspense>
+  </div>
+);
+
+export default App;
+
+#NOTE: when we are using lazy-loading it will create new bundler for <MyLazyComponent />.
+
+=>In this example, MyLazyComponent will be loaded lazily, and the "Loading..." message will be displayed while the component is being fetched. 
+=>Once loaded, the actual component will replace the fallback UI.
+
+=>In the example above:
+React.lazy(() => import('./LazyComponent')) is used to lazily load the LazyComponent from the specified file when it's needed.
+The <Suspense> component is used to wrap the lazy-loaded component. It allows you to specify a fallback UI (e.g., a loading spinner or message) that will be displayed while the lazy-loaded component is being loaded.
+
+
+#If we want to scale and optimize our app this things we have to do :-
+#IMP-NOTE : we are logically splitting "large website" into smaller bundle.
+=>So, that we dont put a load of whole website into a single bundler - ex- dist/index.7271ef.js
+=>Because if we put all our code into single bundler(ex-dist/index.7271ef) then it will become so heavy and it takes time to load that's why we are doing "lazy loading or chunking or dynammic spliting, or on demand load".
+
+-For small application single bundler(dist/index7271efb6.js) is fine no need to chunks into different smaller bundler.
+
+Q.should we do bundling ? if yes then why?
+=>yes we should do bundling bcz suppose, we have thousands of file we don't put that 1000 files into a single bundler(dist/index.7271efb.js) its becomes so heavy it takes alot of time to load.
+=>Thats why we are making smaller bundle of this files.
