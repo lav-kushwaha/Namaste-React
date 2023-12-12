@@ -56,7 +56,9 @@ a{
     gap:3vw;
 }
 
+
 .res-card{
+    position: relative;
     width:280px;
     height:200px;
     padding:6px;
@@ -80,7 +82,7 @@ a{
 }
 
 .res-card:hover{
-  transform: scale(0.9);
+  /* transform: scale(0.9); */
   cursor: pointer;
   border:none;
 }
@@ -251,4 +253,23 @@ p {
 .status-container p {
   margin: 0;
   color:white;
+}
+
+/*Higher order components.*/
+.veg-items{
+  position: absolute;
+  color: white;
+  background-color:#000000;
+  padding-inline:10px;
+  border-radius:0px 5px;
+  margin-left:7px;
+  margin-top:20px;
+  z-index:999;
+  transition: 0.3s ease-out;
+}
+
+.veg-items:hover{
+    transform: scale(0.9);
+    cursor: pointer;
+    border:none;
 }

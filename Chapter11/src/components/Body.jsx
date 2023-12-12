@@ -1,4 +1,4 @@
-import RestaurantCard from "./Restaurantcard";
+import RestaurantCard, { VegItems } from "./Restaurantcard";
 // import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
@@ -13,12 +13,14 @@ const Body = () => {
   const[filterList,setFilterList] = useState([]);
   const[search,setSearch] = useState("");
 
+
+//Higher Order Component=> It takes a component which is Restaurant Card.
+const VegItem = VegItems(RestaurantCard);
+
   // console.log(list)
   useEffect(()=>{
     fetchData();
   },[])
-
-
 
   const fetchData = async () =>{
       const data = await fetch(RESTAURANTS_API);
@@ -35,6 +37,22 @@ const Body = () => {
      setFilterList(ratingsFilter)
   }
 
+  //Pure Veg.
+  const PureVeg=()=>{
+     const veg = list.filter((item)=>item.veg==true);
+     setFilterList(veg)
+  }
+
+  //LessThan 300
+  const LessThan300 = () => {
+      const less = list.filter((item) => {
+      const costForTwoNumeric = parseInt(item.costForTwo.match(/\d+/)[0], 10);
+      return costForTwoNumeric < 300;
+    });
+      setFilterList(less);
+  };
+  
+
   //Reset Button.
   const ResetFilter =()=>{
     setFilterList(list)
@@ -43,7 +61,7 @@ const Body = () => {
   //Search Functionality.
   const SearchFood = () =>{
     const searching = list.filter((item)=>item.name.toLowerCase().includes(search.toLowerCase()))
-    setFilterList(searching);
+    setFilterList(searching)
   }
 
   const status = useOnlinestatus();
@@ -63,13 +81,21 @@ const Body = () => {
               </div>
               <button className="filter-btn" onClick={FilterCard}>Top Rated Restaurant</button>
               <button className="filter-btn" onClick={ResetFilter}>Reset</button>
+              <button className="filter-btn" onClick={PureVeg}>Pure Veg</button>
+              <button className="filter-btn" onClick={LessThan300}>Less than Rs. 300</button>
               </div>
             <div className='res-container'>            
-            {
+              {
               filterList.map((item)=>(
                 //path:"/restaurants/:resID", element:<RestaurantMenu/>
                 //Key should be on the parent Jsx that we map.
-                <Link key={item.id} to={`restaurants/${item.id}`}><RestaurantCard resData={item}/></Link>
+                <Link key={item.id} to={`restaurants/${item.id}`}>
+                 {
+                  // if item.veg is true then return HOC Component(VegItem) otherwise return normal RestauarantCard.
+                 item.veg?<VegItem resData={item}/>
+                 :<RestaurantCard resData={item}/>
+                 }
+                </Link>
               ))
             }
             </div>
