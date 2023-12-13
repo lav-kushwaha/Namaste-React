@@ -3,7 +3,7 @@
 //SWIGGY IMAGE LINK URL.
 export const CDN_LINK = 
 "https://corsproxy.io/?https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660"
-
+// https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit
 
 //RESTAURANTS_API - Body.jsx
 export const RESTAURANTS_API = 

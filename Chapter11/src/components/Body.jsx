@@ -1,4 +1,4 @@
-import RestaurantCard, { VegItems } from "./Restaurantcard";
+import RestaurantCard, { VegItems } from "./RestaurantCard";
 // import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
