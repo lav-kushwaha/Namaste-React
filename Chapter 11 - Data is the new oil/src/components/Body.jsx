@@ -1,11 +1,12 @@
 import RestaurantCard, { VegItems } from "./RestaurantCard";
 // import resList from "../utils/mockData";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import{Link} from "react-router-dom"
 import { RESTAURANTS_API } from "../utils/constant";
 import useOnlinestatus from "../utils/useOnlinestatus";
 import InternetConnectionChecker from "./Nointernet";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   //State variable - useState Hooks.
@@ -16,6 +17,9 @@ const Body = () => {
 
 //Higher Order Component=> It takes a component which is Restaurant Card.
 const VegItem = VegItems(RestaurantCard);
+
+//useContext()=>It is use to access the value of context.=>setUserName coming from App.js
+  const {LoggedInUser,setUserName} = useContext(UserContext);
 
   // console.log(list)
   useEffect(()=>{
@@ -78,6 +82,14 @@ const VegItem = VegItems(RestaurantCard);
                  value={search} 
                  onChange={(e)=>setSearch(e.target.value)}/>
                   <button onClick={SearchFood}>Search</button>
+                  <br/>
+                  <br/>
+                  <br/>
+                  {/*Changing State of contex by using input field */}
+                  <input type="text" 
+                 placeholder="Context API Input"
+                 value={LoggedInUser} 
+                 onChange={(e)=>setUserName(e.target.value)}/>
               </div>
               <button className="filter-btn" onClick={FilterCard}>Top Rated Restaurant</button>
               <button className="filter-btn" onClick={ResetFilter}>Reset</button>
@@ -86,7 +98,7 @@ const VegItem = VegItems(RestaurantCard);
               </div>
             <div className='res-container'>            
               {
-              filterList.map((item)=>(
+                filterList.map((item)=>(
                 //path:"/restaurants/:resID", element:<RestaurantMenu/>
                 //Key should be on the parent Jsx that we map.
                 <Link key={item.id} to={`restaurants/${item.id}`}>

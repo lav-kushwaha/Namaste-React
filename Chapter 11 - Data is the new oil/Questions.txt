@@ -288,7 +288,7 @@ const UserContext = createContext({
 
 export default UserContext;
 
-#Accessing that userContext data in SomeComponent.js by using useContext hooks.
+#Accessing that userContext.js data in SomeComponent.js by using useContext hooks.
 => SomeComponent.js
 import React, { useContext } from 'react';
 import UserContext from './UserContext';
@@ -304,6 +304,31 @@ const SomeComponent = () => {
 };
 
 export default SomeComponent;
+
+#Accessing the userContext.js data into classbased component using consumer.
+=>About.jsx
+import React, { Component } from 'react'
+import UserClass from './UserClass';
+import UserContext from '../utils/UserContext';
+
+class About extends Component{
+  constructor(){
+    super();
+  }
+  render(){
+    return(
+      <div className='about'>
+        {/*We are using "Consumer" to access data from context in class Component.*/}
+       <UserContext.Consumer>
+        {({LoggedInUser})=><h2>{LoggedInUser}</h2>}
+        </UserContext.Consumer>
+       <UserClass/>
+    </div>
+    )
+  }
+}
+export default About;
+
 
 #This is How we Provide Data to UserContext.js - 
 //App Layout.

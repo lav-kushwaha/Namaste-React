@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&family=Source+Sans+3:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color:rgba(2, 6, 12, 0.75);
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    padding-inline:10vw;
+}
+
+.logo-container img{
+    width:125px;
+    cursor:pointer;
+    margin-top:1vw;
+}
+
+.nav-items ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style:none;
+    column-gap:20px;
+    font-size:1.2vw;
+    cursor: pointer;
+    font-weight:500;
+}
+
+a{
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.body-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top:2vw;
+}
+
+.Body{
+   width:1280px;
+}
+
+.res-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:3vw;
+}
+
+
+.res-card{
+    position: relative;
+    width:280px;
+    height:200px;
+    padding:6px;
+    text-align: start;
+    transition:0.3s ease-in;
+    margin-bottom:8vw;
+}
+
+.card-details{
+  line-height:19px;
+  padding-left:8px;
+}
+
+.res-card h3{
+    font-size:16px;
+}
+
+.res-card p{
+  font-size:16px;
+  line-height:18px;
+}
+
+.res-card:hover{
+  /* transform: scale(0.9); */
+  cursor: pointer;
+  border:none;
+}
+
+.res-card img{
+    width:100%;
+    height:100%;
+    border-radius:10%;
+    object-fit: cover;
+}
+
+.filter-btn{
+    margin:30px 0px 30px 40px;
+    padding:8px;
+    color:#534f4f;
+    background-color:white;
+    border-radius:10px;
+    cursor: pointer;
+    border:2px solid rgb(217, 205, 205);
+}
+
+/* Shimmer component  */
+.shimmer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2vw;
+  }
+  
+  .shimmer-card {
+    padding: 6px;
+    width:280px;
+    height:200px;
+    text-align: center;
+    transition: 0.3s ease-out;
+    border: 2px solid rgb(217, 205, 205);
+    background-color: #bbb;
+    position: relative;
+    overflow: hidden;
+    border-radius:10%;
+
+
+  }
+  
+  .shimmer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(to right, transparent 0%, #fff 50%, transparent 100%);
+    animation: shimmer 1.5s infinite linear;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+.login-btn{
+  padding:2px 12px;
+  cursor: pointer;
+}
+
+.search{
+  text-align: center;
+  margin-bottom:20px;
+}
+
+.search input{
+   height:2vw;
+   width:25vw;
+   padding:19px;
+   font-size:15px;
+   border-radius:8px 0px 0px 8px;
+   border:2px solid rgb(217, 205, 205);
+}
+
+.search button {
+  height:2.7vw;
+  padding-inline:40px;
+  font-size:15px;
+  font-weight: 500;
+  border-radius:0px 8px 8px 0px;
+  background-color:#3b71ca;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+/* Error Component */
+/* Error.css */
+/* AnimatedError.css */
+
+.error-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(45deg, #ff7e5f, #a9120a);
+  opacity: 0;
+  animation: fadeIn 1s forwards; /* Animation for fade-in effect */
+}
+
+.error-content {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-20px);
+  animation: slideIn 1s forwards; /* Animation for slide-in effect */
+}
+
+.error-icon {
+  font-size: 3em;
+  margin-bottom: 10px;
+  color: #ff3d00;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  font-size: 2em;
+  color: #333;
+}
+
+p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* RestaurantMenu Css*/
+.menu{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.menu-image-container{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color:rgb(23, 20, 20);
+   width: 100%;
+   column-gap:15px;
+}
+.menu-detail h3{
+    color: white;
+    font-size:2vw;
+}
+.menu-detail h2{
+  color: rgb(230, 208, 6);
+  font-size:2vw;
+}
+.menu-detail p{
+   display: inline;
+   background-color: #016034;
+   border-radius:10%;
+   color: white;
+   font-size:15px;
+   padding:1% 2%;
+}
+.menu-image-container img{
+   width:20%;
+   height:260px;
+   object-fit:cover;
+   border-radius:5%;
+   margin:1%;  
+}
+
+.menu-recommended-container{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap:9px;
+}
+
+.menu-recommended{
+  width:50%;
+  font-size:1.7vw;
+  font-weight: 600;
+  padding:1vw;
+  box-shadow:0.5px 2px 2px gray;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-items{
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-items{
+ cursor: pointer;
+}
+
+.items-description{
+    font-size:15px;
+}
+.Item-list-data{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content:space-between;
+  align-items: center;
+  border-bottom:2px solid rgb(113, 111, 111);
+
+}
+
+.Item-list-data img{
+  width:180px;
+  height:150px;
+  margin:2px;
+  border-top-right-radius:12%;
+  border-top-left-radius:12%;
+}
+
+.Item-list{
+  display: flex;
+  flex-direction: column;
+}
+
+.Item-list p{
+   font-weight:400;
+   font-size:14px;
+   width:80%;
+}
+
+.list-image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:15px;
+}
+.list-image button{
+  padding:6px 72px;
+  border-radius:5px;
+  border:none;
+  font-size:18px;
+  color: #0e9e5d;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+/* InternetConnection-Checker Css */
+/* Add this CSS to your main stylesheet or component style */
+
+.status-container {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.status-container p {
+  margin: 0;
+  color:white;
+}
+
+/*Higher order components.*/
+.veg-items{
+  position: absolute;
+  color: white;
+  background-color: green;
+  padding-inline:10px;
+  border-radius:0px 5px;
+  margin-left:7px;
+  margin-top:20px;
+  z-index:999;
+  transition: 0.3s ease-out;
+}
+
+.veg-items:hover{
+    transform: scale(0.9);
+    cursor: pointer;
+    border:none;
+}
