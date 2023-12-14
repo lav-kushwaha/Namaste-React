@@ -18,7 +18,7 @@ const RestaurantCard = ({resData}) =>{
 }
 
 
-//Higher Order Component =>RestaurantCardVeg
+//Higher Order Component =>VegItems
 //This VegItems Is Takes a component "RestaurantCard" and its return new modified component with <p>Veg</p>.
 export const VegItems = (RestaurantCard)=>{
     return(props)=>{

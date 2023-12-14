@@ -43,3 +43,301 @@ Q.What is UI Layer ?
 Q.What is Data Layer ?
 =>Data layer is the state, props, local variable,curly-brackets inside jsx the javascript code we write.
 
+
+Q.What is Controlled Components:
+# Definition: Controlled components are React components where React is responsible for maintaining and controlling the state of the form elements.
+# State Handling: The component's state is kept in the React state, and any changes to the state are handled through React component methods (such as setState).
+
+=>import React, { useState } from 'react';
+
+function ControlledComponent() {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <input type="text" value={value} onChange={handleChange} />
+  );
+}
+
+Pros:
+Precise control over the form elements.
+Easy to implement validation and additional logic.
+
+Q.What is uncontroled component ?
+=>Uncontrolled component means its managing its own state parents doesn't have any controlled.
+=>Uncontrolled Component:
+  -Manages its own state internally.
+  -The state is often managed by the DOM itself, and React does not control it.
+  -Refs are commonly used to access and manipulate the DOM elements directly.
+  -React is more involved in handling events and actions rather than maintaining the state.
+
+=> Definition: Uncontrolled components are React components where the form elements maintain their own state, and React is not directly involved in managing that state.
+=> State Handling: The state of the form elements is managed by the DOM itself. React is used more for event handling rather than state management.
+#example:
+import React, { useRef } from 'react';
+
+function UncontrolledComponent() {
+  const inputRef = useRef(null);
+
+  const handleClick = () => {
+    alert(`Input value: ${inputRef.current.value}`);
+  };
+
+  return (
+    <div>
+      <input type="text" ref={inputRef} />
+      <button onClick={handleClick}>Get Input Value</button>
+    </div>
+  );
+}
+
+Note : If the component is controlling its self it would have been uncontrolled component.
+=>In a controlled component, React controls and manages the state. 
+=>In an uncontrolled component, the state is managed more by the DOM, and React is less involved in controlling that state.
+
+
+Q.What is lifting state up in ReactJS?
+=>Sometimes, you want the state of two components to always change together. 
+=>To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as lifting state up, and it's one of the most common things you will do writing React code.
+=>"Lifting state up" for React means that you should replace data from your child component to parent component state and pass data for presentation to child component by props.
+=>"Lifting state" is a React programming concept in which the parent component modifies its state and passes it down to child components. When the state of the parent component changes, this change is received by the child components as props, triggering their re-render.
+#In Hindi -Lifting state" ek React programming concept hai jismein parent component apne state ko modify karke usse child components tak pass karta hai. Jab parent component ka state change hota hai, to ye change child components ko props ke roop mein milta hai aur unhe re-render karta hai.
+ex-accordion.
+
+Q.What is lazy loading in React?
+=>Lazy loading in React.
+=>In essence, lazy loading means that a component or a part of code must get loaded when it is required
+
+Q.What is props and props drilling?
+#Props :
+=>Props or Properties are nothing but the data or object which contains set of values getting passed to child component.
+=>Props are read-only in nature and follows the uni-directional flow.
+
+#Props drilling :
+=>Prop Drilling in React is where you need to pass data through multiple layers of nested components in a component tree, even though some of those intermediate components don’t need the data itself.
+=>This can complicate the maintenance of your code and lead to unnecessary coupling between components and problematic in large and deeply nested component hierarchies.
+
+#How to avoid props drilling :
+=>To avoid prop drilling , We can use following concepts:
+=>To avoid prop drilling between components we can have solution by not passing props between component , we can store them separately and pass to desired component rather than passing to components where it is not required or intermediate component, hence these are some of the ways through which we can restrict prop drilling.
+1.Context Api.
+2.Redux
+
+
+Q.What is contextAPI ?
+=>Context API allows data to be passed through a component tree without having to pass props manually at every level.
+=>This makes it easier to share data between components.
+
+=>The Context API in React provides a way to share values like themes, user authentication status, language preferences, or any other kind of data across the component tree without passing props manually at every level.
+=>It consists of a Provider component that allows the components to subscribe to the context changes and a Consumer component that enables components to consume the context values.
+
+#Here's a breakdown of the key terms:
+
+#Context:
+=>A JavaScript object that allows sharing values like data or functions with multiple components without explicitly passing them through props.
+
+#Provider:
+=>A component that allows you to wrap your application or a part of it and provide the shared context values. It takes a value prop, which represents the data you want to share.
+
+#Consumer:
+=>A component that allows you to subscribe to the context changes and access the shared values within the component tree.
+
+#createContext:
+=>A function provided by React that creates a new context. It returns an object with a Provider and a Consumer component.
+
+
+Q.What is useContext ?
+=>useContext. Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+Q.How to acces data from context api to component ?
+=>To access data from the Context API in a component, you can use either the useContext hook or the Consumer component. The useContext hook is often preferred in functional components, while the Consumer component is used in class components or when dealing with more complex scenarios.
+=>The useContext Hook provides function components access to the context value for a context object. 
+=>It: Takes the context object (i.e., value returned from React. createContext ) as the one argument it accepts. And returns the current context value as given by the nearest context provider
+
+Q.useContext vs contextAPI ?
+=>useContext is a part of the Context API in React. The Context API is a mechanism for sharing values like state, configuration, or any other data across the component tree without explicitly passing props.
+
+#The Context API consists of two main parts:
+
+1.createContext function.
+=>This function is used to create a context. It returns an object with Provider and Consumer components.
+=>const MyContext = React.createContext();
+
+2.useContext hook:
+=>This hook is used to consume the value provided by a Context.Provider in functional components.
+=>const sharedData = useContext(MyContext);
+
+NOTE :the useContext hook provides an alternative and more concise way to consume context values in functional components.
+=> However, Consumer is still relevant and useful, especially in "class components" or in situations where the hook is not applicable.
+
+
+Q.How many way we can access contextAPI ?
+=>There are primarily two ways to access context values in a React application: using the useContext hook and the Consumer component.
+=>The choice between them often depends on whether you are working with a functional component or a class component, and personal or team preferences.
+
+1.useContext Hook:
+import React, { useContext } from 'react';
+import MyContext from './MyContext'; // Import your context
+
+const MyComponent = () => {
+  const sharedData = useContext(MyContext);
+
+  return (
+    <div>
+      <p>Data from Context: {sharedData}</p>
+    </div>
+  );
+};
+
+#Pros:
+=>Concise and easy to use in functional components.
+=>Reduces nesting levels in the component tree.
+
+#Cons:
+=>Only works in functional components.
+=>Might be less suitable for more complex scenarios involving multiple contexts or logic.
+
+2.Consumer Component:
+=>Example -
+import React from 'react';
+import MyContext from './MyContext'; // Import your context->MyContext is component where we write logic.
+
+const MyComponent = () => {
+  return (
+    <MyContext.Consumer>
+      {(sharedData) => (
+        <div>
+          <p>Data from Context: {sharedData}</p>
+        </div>
+      )}
+    </MyContext.Consumer>
+  );
+};
+#NOTE :Inside <MyContext.Consumer/> it takes a callback function.
+=> {(sharedData) => (
+        <div>
+          <p>Data from Context: {sharedData}</p>
+        </div>
+      )}
+
+#Pros:
+=>Works in both functional and class components.
+=>Allows more complex logic within the consumer.
+
+#Cons:
+=>Requires a render prop pattern, which some developers find less clean or readable.
+=>Can lead to more nesting in the component tree.
+
+#Choosing Between useContext and Consumer:
+#Functional Components:
+=>If you are working with functional components, the useContext hook is often preferred for its simplicity and readability.
+#Class Components:
+=>If you are working with class components or need more complex logic within the consumer, the Consumer component is a suitable choice.
+
+
+Q.Provider and Consumer ?
+#In the Context of Context API:
+
+1.Provider and Consumer Pattern:
+=>Both functional and class components can be used with the Provider and Consumer pattern in the Context API.
+#example-
+const MyContext = React.createContext();
+
+const MyProvider = ({ children }) => {
+  const sharedData = "This is shared data";
+  return <MyContext.Provider value={sharedData}>{children}</MyContext.Provider>;
+};
+
+
+class MyComponent extends React.Component {
+  render() {
+    return (
+      <MyContext.Consumer>
+        {({value}) => <p>Data from Context: {value}</p>}
+      </MyContext.Consumer>
+    );
+  }
+}
+
+2.useContext Hook:
+=>The useContext hook is used only in functional components.
+=>It provides a more concise way to consume context values.
+#Example -
+import React, { useContext } from 'react';
+const MyContext = React.createContext();
+
+const MyComponent = () => {
+  const value = useContext(MyContext);
+  return <p>Data from Context: {value}</p>;
+};
+
+=================================================================++++++++++++++++++++++++++++++++++++++++++++=============================================
+
+Q.How to create ContextAPI ?
+#By Akshay Saini Sir.
+
+=>UserContext.js
+import {createContext} from 'react'
+
+const UserContext = createContext({
+  loggedInUser :"Default User"
+});
+
+export default UserContext;
+
+#Accessing that userContext data in SomeComponent.js by using useContext hooks.
+=> SomeComponent.js
+import React, { useContext } from 'react';
+import UserContext from './UserContext';
+
+const SomeComponent = () => {
+  const { loggedInUser } = useContext(UserContext);
+
+  return (
+    <div>
+      <p>Logged In User: {loggedInUser}</p>
+    </div>
+  );
+};
+
+export default SomeComponent;
+
+#This is How we Provide Data to UserContext.js - 
+//App Layout.
+import UserContext from './utils/UserContext';
+const AppLayout = ()=>{
+     const[userName,setUserName]=useState();
+
+     //Make an API call and send username.
+     useEffect(()=>{
+      const data = {
+        name:"Lav Kushwaha"
+      }
+      setUserName(data.name);
+     },[])
+
+    return(
+      //LoggedInUser will be change default to Lav Kushwaha  UserContext.js and it is display to every component where we have access useContext.js data by using useContext() hooks. 
+      <UserContext.Provider value={{LoggedInUser:userName}}>
+        <div className='app'>
+            <Header/>
+            <Outlet/>
+        </div>
+        </UserContext.Provider>
+
+    );
+}
+
+===================================================+++++++++++++++++++++++++++++++++++++==============================
+
+Here's a simplified recap:
+
+=>Context: A way to share data between components without passing props through all levels.
+=>Provider: Wraps the part of the tree where the shared data is made available.
+=>Consumer: Allows components to subscribe to context changes and access the shared data.
+=>useState: Hook for managing state in functional components.
+=>createContext: Function to create a new context.
+=>useContext: Hook for consuming context values in functional components.

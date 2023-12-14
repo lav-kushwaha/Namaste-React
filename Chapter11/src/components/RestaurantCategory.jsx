@@ -1,14 +1,20 @@
-import React from 'react'
 import ItemList from './ItemList';
-const RestaurantCategory = (props)=>{
-    return(     
-         <div className="menu-recommended">
-            <div className="menu-items">
+
+const RestaurantCategory = ({ showItems, showIndex, ...props }) => {
+
+    const handleHideAndShow = () => {
+        showIndex();
+    }
+
+    return (
+        <div className="menu-recommended">
+            <div className="menu-items" onClick={handleHideAndShow}>
                 <span>{props?.title} ({props.itemCards?.length})</span>
-                <span>⬇️</span>
+                <span>{showItems ? "🔽" : "🔼"}</span>
             </div>
-            <ItemList items={props.itemCards}/>
-         </div>      
+            {showItems && <ItemList items={props.itemCards} />}
+        </div>
     )
 }
+
 export default RestaurantCategory;

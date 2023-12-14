@@ -1,11 +1,19 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import logo from '../../images/logo.png'
 import {Link} from 'react-router-dom';
 import useOnlinestatus from '../utils/useOnlinestatus';
+import UserContext from '../utils/UserContext';
 
 const Header = () =>{
     const [btnName,setbtnName]=useState("Login")
+    
+    //Custom Hooks.
     const status = useOnlinestatus();
+
+    //useContext hooks to access the context value.
+    const {LoggedInUser} = useContext(UserContext)
+    // console.log(LoggedInUser) //Default = this default data are comming from UserContext.js
+ 
     return (
         <div className='header'>
             <div className='logo-container'>
@@ -28,6 +36,7 @@ const Header = () =>{
                         ?setbtnName("Logout")
                         :setbtnName("Login")}}>{btnName}
                     </button>
+                    <li>{LoggedInUser}</li>
                 </ul>
             </div>
         </div>

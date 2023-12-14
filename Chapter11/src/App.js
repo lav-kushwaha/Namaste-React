@@ -1,4 +1,4 @@
-import React,{lazy,Suspense} from 'react'
+import React,{lazy,Suspense, useEffect, useState} from 'react'
 import ReactDOM from 'react-dom/client'
 import Header from './components/Header';
 import Body from './components/Body';
@@ -7,19 +7,33 @@ import About from './components/About';
 // import Contact from './components/contact';
 import Error from './components/Error'
 import RestaurantMenu from './components/RestaurantMenu';
+import UserContext from './utils/UserContext';
 
 
-//Lazy Loading -
+//Lazy Loading - it is load when its required.
 const Contact = lazy(()=>import('./components/contact'));
 
 //App Layout.
-const AppLayout = () =>{
+const AppLayout = ()=>{
+     const[userName,setUserName]=useState();
+
+     //Make an API call and send username.
+     useEffect(()=>{
+      const data = {
+        name:"Lav Kushwaha"
+      }
+      setUserName(data.name);
+     },[])
+
     return(
+      <UserContext.Provider value={{LoggedInUser:userName}}>
         <div className='app'>
             <Header/>
             <Outlet/>
         </div>
-    )
+        </UserContext.Provider>
+
+    );
 }
 
 const appRouter = createBrowserRouter([

@@ -286,7 +286,7 @@ p {
   font-size:1.7vw;
   font-weight: 600;
   padding:1vw;
-  box-shadow:0px 2px 0.1px gray;
+  box-shadow:0.5px 2px 2px gray;
   display: flex;
   flex-direction: column;
 }
@@ -294,6 +294,10 @@ p {
 .menu-items{
   display: flex;
   justify-content: space-between;
+}
+
+.menu-items{
+ cursor: pointer;
 }
 
 .items-description{
@@ -309,10 +313,11 @@ p {
 }
 
 .Item-list-data img{
-  width:160px;
-  padding:10px;
-  margin:3px;
-  border-radius:12%;
+  width:180px;
+  height:150px;
+  margin:2px;
+  border-top-right-radius:12%;
+  border-top-left-radius:12%;
 }
 
 .Item-list{
@@ -322,7 +327,7 @@ p {
 
 .Item-list p{
    font-weight:400;
-   font-size:13px;
+   font-size:14px;
    width:80%;
 }
 
@@ -330,14 +335,13 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin:15px;
 }
 .list-image button{
-  position: absolute;
-  margin-top:125px;
-  padding:6px 30px;
+  padding:6px 72px;
   border-radius:5px;
   border:none;
-  font-size:15px;
+  font-size:18px;
   color: #0e9e5d;
   font-weight: 500;
   cursor: pointer;
@@ -365,7 +369,7 @@ p {
 .veg-items{
   position: absolute;
   color: white;
-  background-color:#000000;
+  background-color: green;
   padding-inline:10px;
   border-radius:0px 5px;
   margin-left:7px;

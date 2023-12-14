@@ -91,7 +91,8 @@ const VegItem = VegItems(RestaurantCard);
                 //Key should be on the parent Jsx that we map.
                 <Link key={item.id} to={`restaurants/${item.id}`}>
                  {
-                  // if item.veg is true then return HOC Component(VegItem) otherwise return normal RestauarantCard.
+                
+                 //if item.veg is true then return HOC Component(VegItem) otherwise return normal RestauarantCard.
                  item.veg?<VegItem resData={item}/>
                  :<RestaurantCard resData={item}/>
                  }
