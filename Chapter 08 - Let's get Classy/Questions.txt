@@ -5,7 +5,7 @@ Chapter 07 - Let Get Classy.
 Q.What is class Based Components ?
 =>Its a normal js class.
 #How create class based componet ?
- =>This extends React.Component will make react know this is class based componet.
+ =>This extends React.Component will make react know this is class based component.
  =>Class componet have Render(){} method which is return some piece of jsx to display the UI. 
 => ex -
 import React from 'react'
@@ -87,7 +87,7 @@ Q.What is componentDidMount ?
 =>It is a lifecycle method componentDidMount called automatically by React after the component has been rendered for the first clip and inserted into the DOM.
 =>componentDidMount is called when component rendered completely mounted is finished to the browser.
 =>componentDidMount is the final step of the mounting process. Using the componentDidMount() method, we can execute the React code when the component has already been placed in the DOM (Document Object Model). 
-=>It is used for handling for handling all network requests and setting up subscriptions.
+=>It is used for handling all network requests and setting up subscriptions.
 =>First constructor call then render method call at the last componentDidMount is callled.
 
 #Important usecase of componentDidMount.
@@ -144,7 +144,8 @@ Q.What is componentWillUnmount ?
 =>componentWillUnmount will be called when component gone from the page.
 =>For, example if we go one page to another.
 =>The componentWillUnmount() method allows us to execute the React code when the component gets destroyed or unmounted from the DOM
-=>The Mounting Phase begins when a component is first created and inserted into the DOM. The Updating Phase occurs when a component's state or props change.
+=>The Mounting Phase begins when a component is first created and inserted into the DOM.
+=> The Updating Phase occurs when a component's state or props change.
 => And the Unmounting Phase occurs when a component is removed from the DOM.
 
 Q.Disadvanatges of single page ?
