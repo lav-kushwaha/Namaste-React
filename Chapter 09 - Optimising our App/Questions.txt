@@ -156,7 +156,6 @@ The <Suspense> component is used to wrap the lazy-loaded component. It allows yo
 #IMP-NOTE : we are logically splitting "large website" into smaller bundle.
 =>So, that we dont put a load of whole website into a single bundler - ex- dist/index.7271ef.js
 =>Because if we put all our code into single bundler(ex-dist/index.7271ef) then it will become so heavy and it takes time to load that's why we are doing "lazy loading or chunking or dynammic spliting, or on demand load".
-
 -For small application single bundler(dist/index7271efb6.js) is fine no need to chunks into different smaller bundler.
 
 Q.should we do bundling ? if yes then why?
