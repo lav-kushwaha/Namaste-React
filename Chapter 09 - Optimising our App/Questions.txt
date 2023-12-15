@@ -47,9 +47,8 @@ export default useRestaurantMenu;
 =>We are made this fetching data menu bcz if something error in fetching data i can directly check that component where i have fetch data component.
 =>and if something error to displaying data i can directly check where i have made component for displaying data.
 
-
 #How to think how write thoughts in the code when we are creating custom hook?
-=>Finalize the contract- 
+=>Finalize the contract - 
 #contract :-
 -what is the input of the hook and output.
 
@@ -76,17 +75,9 @@ const useOnlinestatus = ()=>{
 
 export default useOnlinestatus;
 
-#NOTE:You cant build large frontend application if you will not take care of your bundlers - bundler is like minizing your whole website into one file. ex -index.js.
-=> Your app will become very slow your home page will take a huge time to load.
-=>So, you have to keep this in mind you have to break down your app into smaller pieces or smaller bundles.
-=>This process is known as chunking
- or code splitting,
- dynamic bundling,
- lazy loading,
- on demand loading,
- dynamic import. this all are same concept different name.
 
 Q.What is Lazy Loading ?
+=>In essence, lazy loading means that a component or a part of code must get loaded when it is required
 =>Lazy loading in React refers to the practice of loading components, modules, or assets only when they are actually needed, instead of loading everything up front.
 =>This can help improve the performance of your application by reducing the initial bundle size and loading time.
 =>React provides a built-in feature called React.lazy() that allows you to load components lazily. With React.lazy(), you can dynamically import a component and use it in your application. 
@@ -99,8 +90,20 @@ Q.What is Lazy Loading ?
 => This is beneficial for code-splitting, which breaks down your bundle into smaller chunks loaded on-demand, enhancing the user experience in larger applications.
 
 #Summary :
-=>Keep in mind that lazy loading with React.lazy() is typically used for code-splitting, which allows you to split your bundle into smaller chunks that can be loaded on-demand(when user click on that component), improving the initial loading performance of your application.
+=>Keep in mind that lazy loading with React.lazy() is typically used for code-splitting, which allows you to split your bundle into smaller chunks that can be loaded on-demand(when user click on that component), improving the initial loading performance of your application or  enhancing the user experience in larger applications..
 =>Lazy loading is especially beneficial in larger applications where loading all components upfront might result in a slower user experience.
+
+
+#NOTE:You cant build large frontend application if you will not take care of your bundlers - bundler is like minimizing your whole website into one file. ex -index.js.
+=> Your app will become very slow your home page will take a huge time to load.
+=>So, you have to keep this in mind you have to break down your app into smaller pieces or smaller bundles.
+=>This process is known as chunking
+ or code splitting,
+ dynamic bundling,
+ lazy loading,
+ on demand loading,
+ dynamic import. this all are same concept different name.
+
 
 Q.What is Lazy Loading Syntax ?
 =>1. React.lazy():

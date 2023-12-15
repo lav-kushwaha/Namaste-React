@@ -107,10 +107,6 @@ Q.What is lifting state up in ReactJS?
 #In Hindi -Lifting state" ek React programming concept hai jismein parent component apne state ko modify karke usse child components tak pass karta hai. Jab parent component ka state change hota hai, to ye change child components ko props ke roop mein milta hai aur unhe re-render karta hai.
 ex-accordion.
 
-Q.What is lazy loading in React?
-=>Lazy loading in React.
-=>In essence, lazy loading means that a component or a part of code must get loaded when it is required
-
 Q.What is props and props drilling?
 #Props :
 =>Props or Properties are nothing but the data or object which contains set of values getting passed to child component.
