@@ -13,7 +13,7 @@ const RestaurantMenu = () => {
       const menu = useRestaurantMenu(resID);
 
       //Managing controlled component.
-      const[showIndex,setShowIndex] = useState(null);
+      const[showIndex,setShowIndex] = useState(0);
 
       //if menu is null then return shimmer otherwise move to the next line.
       if (menu === null) {

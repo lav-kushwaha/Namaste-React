@@ -383,3 +383,64 @@ p {
     cursor: pointer;
     border:none;
 }
+
+.cart-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart{
+  margin-top:20px;
+  width:800px;
+}
+.cart h2{
+  text-align: center;
+  padding:10px;
+  
+}
+
+.cart .list-image>button{
+    display:none;
+}
+
+.cart button{
+   margin-top:10px;
+   padding:10px 20px;
+   color:white;
+   font-weight:500;
+   background-color: #a9120a;
+   border:none;
+   border-radius:10px;
+   cursor: pointer;
+}
+
+
+
+/* Empty-cart css */
+.empty-cart-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.empty-cart-image {
+  margin-top:60px;
+  width:30%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.empty-cart-message {
+  font-size:25px;
+  color: #555;
+  margin-block: 15px; 
+  margin-bottom:20px;
+}
+
+.food-cart-button{
+  padding:10px 30px;
+  color:white;
+  background-color:#2163e8;
+  border: none;
+  border-radius:10px;
+  font-weight:500;
+}

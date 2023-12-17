@@ -197,3 +197,40 @@ Summary:Check screenshot in laptop for visualize
 
 Q.what is action ?
 =>In the context of Redux, actions are used to communicate changes or intentions to the Redux store.
+
+#V.IMP : How to use and improve performance by using useSelector.
+
+case 1 : It is subscribe to the whole store then after we get changes into the store.cart.items
+//This is bad practice never use like this.
+const store = useSelector((store)=>store)
+const cartItem = store.cart.items
+
+case2:you directly use like this it will directly subscribe to the inside store cartItem.
+=>const cartItem = useSelector((store)=>store.cart.items)
+
+//why name is useSelector bcz we are selecting specific portion of the store not all store(ex-cart.items) only this will change.
+
+
+Q.What is immer ?
+=>Redux behind the scene uses immer.
+=>Immer is commonly used with Redux Toolkit's createSlice and createAsyncThunk functions to handle state updates in a more concise and readable manner. 
+=>It's an optional but powerful tool for developers working with complex state structures.
+
+NOTE: RTK - either mutate the existing state or return a new state.
+  ex-
+ clearCart:(state)=>{
+            //state = [] we cannot modified state directly here it will modified only local state.
+            //console.log(current(state))
+            state.items.length = 0; //[]
+
+            //state.items = [] //we can write like this also
+
+            // return {items:[]} //this new object will be replaced inside originalstate []
+            //whaterver we will return will replace in state.
+        }
+
+
+#Chrome extension for Redux.
+=>Redux Dev Tools
+
+#Read About RTK query.

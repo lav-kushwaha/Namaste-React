@@ -10,7 +10,6 @@ const ItemList = ({ items }) => {
   const dispatch = useDispatch();
   const handleAddItems = (item)=>{
      const ans = dispatch(addItem(item))
-     console.log(ans)
   }
 
   return (

@@ -22,7 +22,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
-    "react-router-dom": "^6.20.1"
+    "react-router-dom": "^6.20.1",
+    "redux-persist": "^6.0.0",
+    "redux-persist-transform-immutable": "^5.0.0"
   },
   "browserlist": [
     "last 2  version"

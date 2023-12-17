@@ -36,7 +36,7 @@ const Header = () =>{
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/contact">Contact Us</Link></li>
-                    <li><h4>Cart({cartItems.length})</h4></li>
+                    <Link to="/cart" ><h4>Cart({cartItems.length})</h4></Link>
                     <li>{LoggedInUser}</li>
                     <button className='login-btn' 
                     onClick={()=>{
