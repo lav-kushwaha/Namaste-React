@@ -3,6 +3,7 @@ import logo from '../../images/logo.png'
 import {Link} from 'react-router-dom';
 import useOnlinestatus from '../utils/useOnlinestatus';
 import UserContext from '../utils/UserContext';
+import {useSelector} from 'react-redux'
 
 const Header = () =>{
     const [btnName,setbtnName]=useState("Login")
@@ -13,6 +14,12 @@ const Header = () =>{
     //useContext hooks to access the context value.
     const {LoggedInUser} = useContext(UserContext)
     // console.log(LoggedInUser) //Default = this default data are comming from UserContext.js
+
+    //useSelector Hooks - subscribing to the store or selecting data from redux store.
+    //useSelector hooks gives us access to our store.
+    //This data coming from appStore.
+    const cartItems = useSelector((store)=>store.cart.items)
+    // console.log(cartItems);
  
     return (
         <div className='header'>
@@ -29,7 +36,7 @@ const Header = () =>{
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/contact">Contact Us</Link></li>
-                    <li>Cart</li>
+                    <li><h4>Cart({cartItems.length})</h4></li>
                     <li>{LoggedInUser}</li>
                     <button className='login-btn' 
                     onClick={()=>{

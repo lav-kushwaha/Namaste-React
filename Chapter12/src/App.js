@@ -6,6 +6,9 @@ import {createBrowserRouter,Outlet,RouterProvider} from "react-router-dom"
 import About from './components/About';
 import Error from './components/Error'
 import RestaurantMenu from './components/RestaurantMenu';
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore';
+import Cart from './components/Cart';
 
 
 //Lazy Loading - it is load when its required.
@@ -14,10 +17,12 @@ const Contact = lazy(()=>import('./components/contact'));
 //App Layout.
 const AppLayout = ()=>{
     return(
-        <div className='app'>
-            <Header/>
-            <Outlet/>
-        </div>
+      <Provider store={appStore}>
+      <div className='app'>
+          <Header/>
+          <Outlet/>
+      </div>
+      </Provider>
     );
 }
 
@@ -25,6 +30,7 @@ const appRouter = createBrowserRouter([
     {
     path: "/",
     element: <AppLayout />, 
+    errorElement: <Error />, // show error component for path is different or not match.
     children:[
       {
         path: "/",
@@ -46,9 +52,13 @@ const appRouter = createBrowserRouter([
         element:<Suspense fallback={<h1>Loading...</h1>}>
                 <RestaurantMenu/>
                </Suspense>
+      },
+      {
+        path:"/cart",
+        element:<Cart/>
+              
       }
     ],
-    errorElement: <Error />, // show error component for path is different or not match.
   },
 ])
 
