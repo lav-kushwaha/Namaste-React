@@ -16,7 +16,7 @@
 }
 
 .logo-container img{
-    width:125px;
+    width:100px;
     cursor:pointer;
     margin-top:1vw;
 }
@@ -303,13 +303,13 @@ p {
 .items-description{
     font-size:15px;
 }
+
 .Item-list-data{
   display: flex;
   flex-direction: row-reverse;
   justify-content:space-between;
   align-items: center;
   border-bottom:2px solid rgb(113, 111, 111);
-
 }
 
 .Item-list-data img{
@@ -337,20 +337,28 @@ p {
     align-items: center;
     margin:15px;
 }
-.list-image button{
-  padding:6px 72px;
-  border-radius:5px;
+
+.list-image .add-items{
+  padding:6px 65px;
+  border-radius:0px 0px 5px 5px;
   border:none;
   font-size:18px;
-  color: #0e9e5d;
+  color: white;
+  background-color: #0e9e5d;
   font-weight: 500;
   cursor: pointer;
 }
 
+.list-image .add-items:hover {
+  background-color: #0c7b4c;
+}
+
+.list-image .remove-items {
+  display:none;
+}
+
 
 /* InternetConnection-Checker Css */
-/* Add this CSS to your main stylesheet or component style */
-
 .status-container {
   background-color: #e74c3c;
   color: #fff;
@@ -400,22 +408,33 @@ p {
   
 }
 
-.cart .list-image>button{
+.cart .list-image>.add-items{
     display:none;
 }
 
+.cart .list-image .remove-items {
+  display:inline;
+  padding:10px 37px;
+  margin-top:0px;
+  border-radius:0px 0px 5px 5px;
+}
+
+/* clear button */
 .cart button{
    margin-top:10px;
    padding:10px 20px;
    color:white;
+   font-size: medium;
    font-weight:500;
    background-color: #a9120a;
    border:none;
-   border-radius:10px;
+   border-radius:8px;
    cursor: pointer;
 }
 
-
+.cart button:hover {
+  background-color: #d0342e;
+}
 
 /* Empty-cart css */
 .empty-cart-container {
@@ -443,4 +462,19 @@ p {
   border: none;
   border-radius:10px;
   font-weight:500;
+}
+
+.food-cart-button:hover {
+  background-color: #0d50a9;
+}
+
+.cart-items-count{
+  position: absolute;
+  right: 238px;
+  top:20px;
+  background-color: gray;
+  border-radius: 50%;
+  padding:5px; 
+  color: white;
+  font-size: 12px; 
 }

@@ -7,14 +7,13 @@ import EmptyCart from './EmptyCart'
 const Cart = () => {
 
     const cartItem = useSelector((store)=>store.cart.items)
-    console.log(cartItem)
+    // console.log(cartItem)
 
     //If food cart is empty then it will display EmptyCart component.
     if(cartItem.length == 0) return <EmptyCart/>
 
     //useDispatch is dispatch action of reducer.
     const dispatch = useDispatch();
-
     const HandleClearCart = ()=>{
         dispatch(clearCart())
     }
@@ -24,7 +23,7 @@ const Cart = () => {
         <div className="cart">
             <h2>Cart</h2>
             <ItemList items={cartItem} button="Remove Items"/>
-            <button onClick={HandleClearCart}>Clear Cart</button>
+            <button className='clear-cart' onClick={HandleClearCart}>Clear Cart</button>
         </div>
     </div>
   )

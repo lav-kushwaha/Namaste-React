@@ -1,7 +1,7 @@
 import React from "react";
 import { CDN_LINK } from "../utils/constant";
 import { useDispatch } from "react-redux";
-import { addItem } from "../utils/cartSlice";
+import { addItem, removeItem } from "../utils/cartSlice";
 
 const ItemList = ({ items }) => {
 
@@ -9,8 +9,14 @@ const ItemList = ({ items }) => {
   //It us used to dispatch action on reducers. 
   const dispatch = useDispatch();
   const handleAddItems = (item)=>{
-     const ans = dispatch(addItem(item))
+     dispatch(addItem(item))
   }
+
+  //removed items.
+  const handleRemoveItems = ()=>{
+      dispatch(removeItem())
+  }
+
 
   return (
     <div className="items-description">
@@ -21,11 +27,12 @@ const ItemList = ({ items }) => {
               src={`${CDN_LINK}/${item.card.info.imageId}`}
               alt="Item-list-Image"
             />
-            <button onClick={()=>handleAddItems(item)}>Add+</button>
+            <button className="add-items" onClick={()=>handleAddItems(item)}>Add+</button>
+            <button className="remove-items" onClick={()=>handleRemoveItems(item)}>Remove Item</button>
           </div>
           <div className="Item-list">
-            <span>{item.card.info.name}</span>
-            <span>₹{item.card.info.price / 100 || item.card.info.defaultPrice/100}</span>
+            <span><strong>{item.card.info.name}</strong></span>
+            <span><strong>₹{item.card.info.price / 100 || item.card.info.defaultPrice/100}</strong></span>
             <p>{item.card.info.description}</p>
           </div>
         </div>
