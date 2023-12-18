@@ -1,11 +1,10 @@
 import RestaurantCard, { VegItems } from "./RestaurantCard";
-import { useContext, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import{Link} from "react-router-dom"
 import { RESTAURANTS_API } from "../utils/constant";
 import useOnlinestatus from "../utils/useOnlinestatus";
 import InternetConnectionChecker from "./Nointernet";
-import UserContext from "../utils/UserContext";
 
 const Body = () => {
   //State variable - useState Hooks.
@@ -13,12 +12,8 @@ const Body = () => {
   const[filterList,setFilterList] = useState([]);
   const[search,setSearch] = useState("");
 
-
 //Higher Order Component=> It takes a component which is Restaurant Card.
 const VegItem = VegItems(RestaurantCard);
-
-//useContext()=>It is use to access the value of context.=>setUserName coming from App.js
-  const {LoggedInUser,setUserName} = useContext(UserContext);
 
   // console.log(list)
   useEffect(()=>{
@@ -36,7 +31,7 @@ const VegItem = VegItems(RestaurantCard);
 
   //Filteration Logic.
   const FilterCard =()=>{
-     const ratingsFilter = list.filter((item)=>item.avgRating > 4)
+     const ratingsFilter = list.filter((item)=>item.avgRating > 4.5)
      setFilterList(ratingsFilter)
   }
 
@@ -68,6 +63,7 @@ const VegItem = VegItems(RestaurantCard);
 
   const status = useOnlinestatus();
   if(status === false) return <InternetConnectionChecker/>
+  
 
     return(
         list.length == 0 ? (<Shimmer/>):(
@@ -81,7 +77,7 @@ const VegItem = VegItems(RestaurantCard);
                  onChange={(e)=>setSearch(e.target.value)}/>
                   <button onClick={SearchFood}>Search</button>
               </div>
-              <button className="filter-btn" onClick={FilterCard}>Top Rated Restaurant</button>
+              <button className="filter-btn" onClick={FilterCard}>Ratings 4.5+</button>
               <button className="filter-btn" onClick={ResetFilter}>Reset</button>
               <button className="filter-btn" onClick={PureVeg}>Pure Veg</button>
               <button className="filter-btn" onClick={LessThan300}>Less than Rs. 300</button>

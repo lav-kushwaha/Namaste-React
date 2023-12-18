@@ -1,236 +1,36 @@
-Episode 12 - Let's build our store.
+Chapter 13 - Time for the test.
 
-Q.When redux is not mandatory ?
-=>When we are making small application.
-=>But when we are making large application that time redux is mandatory.
-=>Redux and react are different libraries.
-=>Use redux when it is required.
+#Types of developer testing:
+=>Developer testing, also known as software testing conducted by developers, plays a crucial role in ensuring the quality and reliability of software. 
+#Unit Testing:
+=> Definition: Testing individual units or components of a software application to ensure they work as intended.
+=> Scope: Focuses on the smallest parts of the code, such as functions or methods.
+=> Tools: JUnit, NUnit, PyTest, etc.
 
-NOTE:redux is not only library which is used to manage state there is another library is zustand.
+#Integration Testing:
+=>Definition: Verifying the interactions and interfaces between software components or systems.
+=>Scope: Ensures that integrated components work together as expected.
+=>Tools: TestNG, Apache JMeter, Postman, etc.
 
+#End to end testing :
+=>Testing the react application as soon as user land on the website to the user leave to the website.
 
-Q.What is redux ?
-=>Redux is an open-source JavaScript library for managing and centralizing application state.
-=>It is most commonly used with libraries such as React or Angular for building user interfaces. 
+#For Testing -
+=>React Testing Library.
 
-#There are two libraries from the Redux Team.
-- Redux
-- Redux Toolkit
+NOTE: When we are building large application its not only build by react we require lots of framework and library to build -
+=>ex- For routing we have used react-router-dom and for state management we have used redux and for testing we are using react-testing library.
+=>It involve so many things (ex- For bundling we have used parcel)
 
-Q.What is redux toolkit ?
-=>#Purpose
-=>The Redux Toolkit package is intended to be the standard way to write Redux logic.
-=>It was originally created to help address three common concerns about Redux:
-  - "Configuring a Redux store is too complicated"
-  - "I have to add a lot of packages to get Redux to do anything useful"
-  - "Redux requires too much boilerplate code"
+#NOTE:React-test-library uses something known as JEST.
+=>Basically, React-testing-library using JEST behind the scene.
 
-=>Redux toolkit is less complicated as compared to vanila redux.
-=>Redux toolkit is best and it is latest way of writing redux.
-=>Redux toolkit is also known as RTK.
+Q.What is JEST ?
+=>Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
+=>It works with projects using: Babel, TypeScript, Node, React, Angular, Vue and more!
 
-
-Q.Advantages of redux ?
-=>Redux offers easy debugging.
-
-
-Q.What is React vs Redux?
-=>React context API vs Redux. As React has become one of the ...
-=>React Context API is designed to share data between components, while Redux is designed for centralized state management.
-=>React Context API updates can happen frequently, while Redux updates are predictable
-
-
-Q.What is redux store ?
-=>A store is an immutable object tree in Redux. 
-=>A store is a state container which holds the application's state.
-=>Redux can have only a single store in your application.
-=>Whenever a store is created in Redux, you need to specify the reducer.
-=>A store holds the whole state tree of your application. 
-=>The only way to change the state inside it is to dispatch an action on it, which triggers the root reducer function to calculate the new state.
-
-NOTE :redux store is an big object where we put our data inside that store and it is kept in global central placed.
-=>Inside redux store there are multiple slices and slices means we are keep data separated we make logical partitions separated.
-
-=>for ex - supposed we make loggedin user so we can create user login slice.
- -For different slices we can make ex- cart slice, user slice.
-
-#How to write data ?
-=>when we click on addtocart button its dispatch and action and then action it will call the function(reducer) and that function(reducer) internally modify or update the slice of redux store or cart.
-=>Thats how we are modifying cart we cant directly modifying the cart.
-#How to read data ?
-=>If we have to read data from the cart slice which is in store then we are used useSelector=>selector will give us data.
-=>when we are using selector that phenomenon is known as subscribing to the store.
-
-Q.What is provider.
-=>In Redux, the Provider is a component provided by the react-redux library that serves as a higher-order component (HOC).
-=>Its primary purpose is to allow the Redux store to be accessible to the entire React component tree.
-#App.js
-import { Provider } from 'react-redux';
-import appStore from './utils/appStore';
-const AppLayout = ()=>{
-    return(
-      <Provider action={appStore}>
-        <div className='app'>
-            <Header/>
-            <Outlet/>
-        </div>
-        </Provider>
-    );
-}
-
-#What is useSelector ?
-=>Selectors are used by components to access a portion of the global state.
-=>useSelector is a hook provided by the React-Redux library, and it is used to select data from the Redux store in a React component.
-=>This hook is a key part of integrating React applications with Redux, allowing components to access and react to changes in the global state managed by Redux.
-#example - 
-import { useSelector } from 'react-redux';
-
-const MyComponent = () => {
-  // Selecting a piece of state from the Redux store
-  const counter = useSelector((state) => state.counter);
-
-  return (
-    <div>
-      <p>Counter: {counter}</p>
-    </div>
-  );
-};
-
-(or)
-  //useSelector Hooks - subscribing to the store or selecting data from redux store.
-    //useSelector hooks gives us access to our store.
-    //This data coming from appStore.js.
-    const cartItems = useSelector((items)=>items.cart.items)
-    console.log(cartItems);
-
-Q.What is useDispatch() ?
-=>useDispatch is a hook provided by the react-redux library in the context of a React-Redux application. 
-=>It is used to get access to the dispatch function of the Redux store.
-=>The dispatch function is what you use to dispatch "actions" to the Redux store, triggering state changes.
-
-#ex - ItemList.js
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import {addItem} from './utils/cartSlice'
-
-const MyComponent = () => {
-  const dispatch = useDispatch();
-
-  const handleClick = () => {
-    // Dispatching an action to the Redux store
-    dispatch(addItem("pizza"));
-  };
-
-  {//Behind the scene:
-  //This will happen inside store #cartSlice.js
-    action:{
-      payload:"pizza"
-    }
-    console.log(action.payload)
-    //pizza}
-
-  return (
-    <div>
-      <button onClick={handleClick}>Increment Counter</button>
-    </div>
-  );
-};
-
-#cartSlice.js
-const cartSlice = createSlice({
-    name:'cart',
-    //state
-    initialState:{
-        items:["Lav","King"]
-    },
-    //reducer which is object it takes a different types of action.(ex-addItem,removeItem,clearCart)
-    reducers:{
-        //reducer function modifie our state based on action.
-        //we are mutating the state over here.
-        //reducer takes two parameter state and action.
-        addItem:(state,action)=>{
-            state.items.push(action.payload);//pizza
-        }
-
-        #JustForUnderStanding purpose.
-        { //When we dispatch(addItem("pizza")) inside ItemList.
-          //It will goes inside action.payload in reducer.
-        //Behind the scene:
-        action:{
-          payload:"pizza"
-        }
-        console.log(action.payload)
-        //pizza
-        }
-}
-})
-
-
-Q.what is useDispatch ?
-=>When you dispatch action, you can include specific data in the payload to provide additional details to the reducer about how the state should be updated.
-ex - const dispatch = useDispatch();
-  const handleClick = () => {
-    // Dispatching an action to the Redux store.
-    dispatch(addItem("pizza"));
-  };
-
-=>{//Behind the scene:
-  //This will happen inside store #cartSlice.js
-    action:{
-      payload:"pizza"
-    }
-    console.log(action.payload)
-    //pizza}
-
-Summary:Check screenshot in laptop for visualize
-=>when we click on add to cart then it will dispatch action and then that action is call to reducer function and then reducer updates the slice of store after that components are subscribe to store using selector then component will automatically update.
-=> and The store allows components to subscribe to changes in the state using useSelector. When the state in the store is updated, all subscribed components are notified, and they can re-render with the updated data.
-
-#Steps :
-#REDUX TOOLKIT
-=>INSTALL @reduxjs/toolkit and react-redux.
-=>Build our store.
-=>connect our store to our app.
-=>Slice (Cart slice)
-=>dispatch(action)
-=>we will read the data using selector.
-
-Q.what is action ?
-=>In the context of Redux, actions are used to communicate changes or intentions to the Redux store.
-
-#V.IMP : How to use and improve performance by using useSelector.
-
-case 1 : It is subscribe to the whole store then after we get changes into the store.cart.items
-//This is bad practice never use like this.
-const store = useSelector((store)=>store)
-const cartItem = store.cart.items
-
-case2:you directly use like this it will directly subscribe to the inside store cartItem.
-=>const cartItem = useSelector((store)=>store.cart.items)
-
-//why name is useSelector bcz we are selecting specific portion of the store not all store(ex-cart.items) only this will change.
-
-
-Q.What is immer ?
-=>Redux behind the scene uses immer.
-=>Immer is commonly used with Redux Toolkit's createSlice and createAsyncThunk functions to handle state updates in a more concise and readable manner. 
-=>It's an optional but powerful tool for developers working with complex state structures.
-
-NOTE: RTK - either mutate the existing state or return a new state.
-  ex-
- clearCart:(state)=>{
-            //state = [] we cannot modified state directly here it will modified only local state.
-            //console.log(current(state))
-            state.items.length = 0; //[]
-
-            //state.items = [] //we can write like this also
-
-            // return {items:[]} //this new object will be replaced inside originalstate []
-            //whaterver we will return will replace in state.
-        }
-
-
-#Chrome extension for Redux.
-=>Redux Dev Tools
-
-#Read About RTK query.
+#Setting up Testing in our app.
+    -Install React Testing Library.
+    -Installed Jest.
+    -Install Babel dependencies
+    -configure babel
