@@ -325,7 +325,6 @@ class About extends Component{
 }
 export default About;
 
-
 #This is How we Provide Data to UserContext.js - 
 //App Layout.
 import UserContext from './utils/UserContext';
@@ -354,7 +353,7 @@ const AppLayout = ()=>{
 
 ===================================================+++++++++++++++++++++++++++++++++++++==============================
 
-Here's a simplified recap:
+#Here's a simplified recap:
 
 =>Context: A way to share data between components without passing props through all levels.
 =>Provider: Wraps the part of the tree where the shared data is made available.
