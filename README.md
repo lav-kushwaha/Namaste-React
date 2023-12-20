@@ -93,6 +93,7 @@ Dynamically rendered components based on conditions, adapting the UI to differen
 ### Tailwind CSS
 Styled React components using Tailwind CSS, a utility-first CSS framework, for rapid and consistent styling.
 
+**and many more..**
 
 ## Thank You For Reading! 🙂
 
