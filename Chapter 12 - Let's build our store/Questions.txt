@@ -35,7 +35,6 @@ Q.Advantages of redux ?
 
 
 Q.What is React vs Redux?
-=>React context API vs Redux. As React has become one of the ...
 =>React Context API is designed to share data between components, while Redux is designed for centralized state management.
 =>React Context API updates can happen frequently, while Redux updates are predictable
 
@@ -55,7 +54,7 @@ NOTE :redux store is an big object where we put our data inside that store and i
  -For different slices we can make ex- cart slice, user slice.
 
 #How to write data ?
-=>when we click on addtocart button its dispatch and action and then action it will call the function(reducer) and that function(reducer) internally modify or update the slice of redux store or cart.
+=>when we click on addtocart button its dispatch action and then action it will call the function(reducer) and that function(reducer) internally modify or update the slice of redux store or cart.
 =>Thats how we are modifying cart we cant directly modifying the cart.
 #How to read data ?
 =>If we have to read data from the cart slice which is in store then we are used useSelector=>selector will give us data.
@@ -123,7 +122,7 @@ const MyComponent = () => {
 
   {//Behind the scene:
   //This will happen inside store #cartSlice.js
-    action:{
+    action={
       payload:"pizza"
     }
     console.log(action.payload)

@@ -9,36 +9,37 @@ Q.What is Higher Order component ?
 example :
 #RestauarantCard.jsx
 =>//Higher Order Component =>RestaurantCardVeg
-export const VegItems = (RestaurantMenu)=>{
-    return()=>{
-        return(
-           <>
-            <label>Veg</label>
-            <RestaurantMenu/>
-           </>
-        )
+//This VegItems Is Takes a component "RestaurantCard" and its return new modified component with <p>Veg</p>.
+export const VegItems = (RestaurantCard)=>{
+    return (props)=>{
+              return(
+               <>
+                <p>Veg</p>
+                <RestaurantCard {...props}/>
+               </>
+           )
     }
 }
 
 #Body.jsx
 //Higher Order Component=> It takes a component which is Restaurant Card.
-const VegItem = VegItems(RestaurantCard);
+const EnhaceComponent = VegItems(RestaurantCard);
    {
               filterList.map((item)=>(
-                //path:"/restaurants/:resID", element:<RestaurantMenu/>
-                //Key should be on the parent Jsx that we map.
                 <Link key={item.id} to={`restaurants/${item.id}`}>
                  {
                   // if item.veg is true then return HOC Component(VegItem) otherwise return normal RestauarantCard.
-                 item.veg?<VegItem resData={item}/>
+                 item.veg?<EnhaceComponent resData={item}/>
                  :<RestaurantCard resData={item}/>
                  }
                 </Link>
               ))
             }
 
+
+
 Q.What is UI Layer ?
-=>The UI layer consisting the JSX - the code which is writing inside the UI layer that is JSX.
+=>The UI layer consisting the JSX - the code which is writing inside the JSX that is  UI layer.
 
 Q.What is Data Layer ?
 =>Data layer is the state, props, local variable,curly-brackets inside jsx the javascript code we write.
@@ -143,10 +144,6 @@ Q.What is contextAPI ?
 
 #createContext:
 =>A function provided by React that creates a new context. It returns an object with a Provider and a Consumer component.
-
-
-Q.What is useContext ?
-=>useContext. Context provides a way to pass data through the component tree without having to pass props down manually at every level.
 
 Q.How to acces data from context api to component ?
 =>To access data from the Context API in a component, you can use either the useContext hook or the Consumer component. The useContext hook is often preferred in functional components, while the Consumer component is used in class components or when dealing with more complex scenarios.

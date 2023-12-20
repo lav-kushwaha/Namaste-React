@@ -6,7 +6,7 @@ const cartSlice = createSlice({
     initialState:{
         items:[]
     },
-    //it is reducers which is object it takes a different types of action or multiple reducer.(ex-addItem,removeItem,clearCart)
+    //it is reducers which is object it takes a different types of action or multiple reducer function.(ex-addItem,removeItem,clearCart)
     reducers:{
         //reducers function modifie our state based on action.
         //we are mutating the state over here.
