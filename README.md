@@ -22,6 +22,7 @@ Welcome to BurgerScriptCafe, a food ordering website inspired by the Swiggy plat
 - Material UI
 - React.js
 - Redux Toolkit
+- Parcel
 
 ## Live Project
 This is the live project I have built while learning React. Before opening this link, make sure to install the 'Allow-CORS: Access-Control-Allow-Origin' extension in your Chrome browser. I have used the Swiggy public API in this project, and browsers may block my live application due to CORS problems
