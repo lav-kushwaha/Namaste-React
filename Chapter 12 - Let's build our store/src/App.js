@@ -10,7 +10,6 @@ import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
 import Cart from './components/Cart';
 
-
 //Lazy Loading - it is load when its required.
 const Contact = lazy(()=>import('./components/contact'));
 
