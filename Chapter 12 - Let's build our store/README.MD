@@ -20,7 +20,6 @@ const AppLayout = ()=>{
         </Provider>
     );
 }
-
 #Header.jsx
     //useSelector Hooks - subscribing to the store or selecting data from redux store.
     //useSelector hooks gives us access to our store.
