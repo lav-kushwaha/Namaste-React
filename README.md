@@ -119,4 +119,15 @@ Styled React components using Tailwind CSS, a utility-first CSS framework, for r
 
 ## Thank You For Reading! 🙂
 
-Happy coding! 🚀
+## 💡 Contributions
+We welcome contributions! If you have improvements, bug fixes, or additional problems, feel free to submit a **pull request**.
+
+## 📜 License
+This repository is licensed under the **MIT License**, ensuring that you can freely use, modify, and distribute the content with proper attribution.
+
+---
+© **Lav Kushwaha** - All rights reserved.
+
+🔗 **Follow & Star** this repository to stay updated!
+
+🚀 **Happy Coding!**
